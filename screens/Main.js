@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, StyleSheet, ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import { View, Image, StyleSheet, ScrollView, SafeAreaView, StatusBar, TouchableOpacity } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import Header from '../parts/Main/Header';
@@ -31,12 +31,14 @@ export default class Main extends Component {
                             <Category navigation={this.props.navigation} category_name={'Les nouveaux fooders'} />
                             <View style={styles.container}></View>
                     </ScrollView>
-                    <View style={styles.mapBox}>
+                    <TouchableOpacity style={styles.mapBox}
+                        onPress={()=>this.props.navigation.navigate('Search')}
+                    >
                         <Image
                             style={styles.mapIcon}
                             source={require('../assets/img/icons/map_icon.png')}
                         />
-                    </View>
+                    </TouchableOpacity>
                     </View>
                 </SafeAreaView>
             </View>

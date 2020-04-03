@@ -22,6 +22,7 @@ import UserInfo from './screens/Profile/UserInfo';
 import UserPayment from './screens/Profile/UserPayment';
 import Notifications from './screens/Profile/Notifications';
 import Support from './screens/Profile/Support';
+import Search from './screens/Search';
 
 const Root = createStackNavigator();
 const Home = createStackNavigator();
@@ -102,6 +103,7 @@ function HomeScreen() {
     >
           <Home.Screen name="Main" component={Main}/>
           <Home.Screen name="Category" component={Category}/>
+          <Home.Screen name="Search" component={Search}/>
     </Home.Navigator>
   )
 }
