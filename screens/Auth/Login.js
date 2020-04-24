@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Image, View, Text, SafeAreaView, TouchableOpacity, StyleSheet} from 'react-native';
-import Button from 'react-native-button';
+import { Image, View, Text, SafeAreaView, TouchableOpacity, StyleSheet } from 'react-native';
+import Svg, {Use} from 'react-native-svg';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Fonts from '../../assets/styles/Fonts';
 
@@ -24,7 +24,8 @@ export default class Login extends Component {
                     </View>
                     <Text style={styles.title}>Bienvenue sur Foodbank</Text>
                     <View>
-                        <Button
+                        <TouchableOpacity
+                            activeOpacity={0.6}
                             onPress={()=>this.props.navigation.navigate('LoginEmail')}
                         >
                             <View style={[styles.button, {backgroundColor: '#00CCBD'}]}>
@@ -36,8 +37,9 @@ export default class Login extends Component {
                                 </View>
                                 <Text style={[styles.buttonText, {color: '#FFFFFF'}]}>Continuer avec l'email</Text>
                             </View>
-                        </Button>
-                        <Button
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.6}
                             onPress={()=>this.props.navigation.navigate('Main')}
                         >
                             <View style={[styles.button, {backgroundColor: '#3B5998'}]}>
@@ -49,8 +51,9 @@ export default class Login extends Component {
                                 </View>
                                 <Text style={[styles.buttonText, {color: '#FFFFFF'}]}>Continuer avec Facebook</Text>
                             </View>
-                        </Button>
-                        <Button
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            activeOpacity={0.6}
                             onPress={()=>this.props.navigation.navigate('Main')}
                         >
                             <View style={[styles.button, {backgroundColor: '#FFFFFF', borderWidth: 2, borderColor: 'rgba(20, 36, 68, 0.3)'}]}>
@@ -62,7 +65,7 @@ export default class Login extends Component {
                                 </View>
                                 <Text style={[styles.buttonText, {color: '#142444'}]}>Continuer avec Google</Text>
                             </View>
-                        </Button>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.bottomTextCont}>
                         <Text style={styles.bottomText}>Vous n’avez pas de compte ? </Text>
@@ -104,8 +107,8 @@ const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: 24,
-        lineHeight: 32,
+        fontSize: hp(2.95),
+        lineHeight: hp(3.94),
         fontFamily: Fonts.Bold,
         color: '#142444',
         marginBottom: hp('4.9%')
@@ -131,8 +134,8 @@ const styles = StyleSheet.create({
 
     buttonText: {
         fontFamily: Fonts.Bold,
-        fontSize: 16,
-        lineHeight: 16,
+        fontSize: hp(1.97),
+        lineHeight: hp(1.97),
     },
 
     buttonIcon: {
@@ -157,15 +160,15 @@ const styles = StyleSheet.create({
 
     bottomText: {
         fontFamily: Fonts.Regular,
-        fontSize: 16,
-        lineHeight: 20,
+        fontSize: hp(1.97),
+        lineHeight: hp(2.46),
         color: '#555555'
     },
 
     link: {
         fontFamily: Fonts.Bold,
-        fontSize: 16,
-        lineHeight: 20,
+        fontSize: hp(1.97),
+        lineHeight: hp(2.46),
         color: '#00CCBD'
     }
 })

@@ -27,9 +27,7 @@ export default class BuyButton extends Component {
             )
         } else if(this.state.qty < 4) {
             return(
-                <TouchableOpacity
-                    onPress = {this.props.handler}
-                >
+                <View>
                     <View style={styles.availableButton}>
                         <Icon
                             name='briefcase'
@@ -39,13 +37,11 @@ export default class BuyButton extends Component {
                         />
                         <Text style={styles.text}>Dernier</Text>
                     </View>
-                </TouchableOpacity>
+                </View>
             )
         } else if(this.state.qty >= 4) {
             return(
-                <TouchableOpacity
-                    onPress = {this.props.handler}
-                >
+                <View>
                     <View style={styles.availableButton}>
                         <Icon
                                 name='briefcase'
@@ -55,7 +51,7 @@ export default class BuyButton extends Component {
                             />
                         <Text style={styles.text}>Plus que 4</Text>
                     </View>
-                </TouchableOpacity>
+                </View>
             )
         }
     }
@@ -79,9 +75,9 @@ const styles = StyleSheet.create({
 
     text: {
         fontFamily: Fonts.Regular,
-        fontSize: 14,
+        fontSize: 15,
         color: '#fff',
-        lineHeight: hp(2.46),
+        lineHeight: 18,
         marginLeft: 8,
     }
 })

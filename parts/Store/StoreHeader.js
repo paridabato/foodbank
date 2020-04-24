@@ -1,92 +1,107 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, StatusBar, Animated, Linking } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { Badge, Icon } from 'react-native-elements';
 import Fonts from '../../assets/styles/Fonts';
+import StoreInfo from './StoreInfo';
 
 export default class Store extends Component {
     constructor(props){
         super(props);
         this.state={
-
+            phoneNumber: '+000000000'
         }
     }
 
     render(){
         return(
-            <View style={styles.header}>
+            <Animated.View style={[{height: this.props.height, opacity: this.props.opacity}, styles.container]}>
                 <StatusBar translucent backgroundColor='rgba(0, 0, 0, 0.4)' barStyle = 'light-content' />
-                <View style={styles.top}>
-                    <Image
-                        style={styles.topImage}
-                        source={require('../../assets/img/store_page.png')}
-                    />
-                    <View style={styles.topBar}>
-                        <TouchableOpacity  
-                            style={styles.back}
-                            onPress={()=>this.props.navigation.goBack()}
-                        >
-                            <View style={styles.backImgCont}>
-                                <Image
-                                    style={styles.backImg}
-                                    source={require('../../assets/img/back_arrow.png')}
-                                />
-                            </View>
-                        </TouchableOpacity>
-                        <View style={styles.discount}>
-                            <Image
-                                style={styles.discountImg}
-                                source={require('../../assets/img/icons/sun.png')}
-                            />
-                            <Text style={styles.discountText}>Hier -10% aujourd'hui -20%</Text>
-                        </View>
-                    </View>
-                    <View style={styles.info}>
-                        <View style={styles.logoBox}>
-                            <Image
-                                style={styles.logo}
-                                source={require('../../assets/img/sushis.png')}
-                            />
-                        </View>
-                        <View style={styles.status}>
-                            <Badge status="warning" size="large"/>
-                            <Text style={styles.statusText}>Ferme dans 1h</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={styles.bot}>
-                    <Text style={styles.name}>Boulangerie Paul</Text>
-                    <View style={styles.summary}>
-                        <View style={styles.rate}>
-                                <Icon
-                                    name='star'
-                                    size={hp(1.72)}
-                                    type='material-community'
-                                    color='#00ccbd'
-                                />
-                            <Text style={styles.summaryText}>4,5</Text>
-                            <Text style={styles.summaryText}>Très bien</Text>
-                            <Text style={styles.summaryText}>(50+)</Text>
-                        </View>
-                        <TouchableOpacity>
-                            <View style={styles.call}>
-                                <View style={styles.iconCallBox}>
+                <View style={styles.header}>
+                    <View style={styles.top}>
+                        <Image
+                            style={styles.topImage}
+                            source={require('../../assets/img/store_page.png')}
+                        />
+                        <View style={styles.topBar}>
+                            <TouchableOpacity  
+                                style={styles.back}
+                                onPress={()=>this.props.navigation.goBack()}
+                            >
+                                <View style={styles.backImgCont}>
                                     <Image
-                                        style={styles.iconCall}
-                                        source={require('../../assets/img/icons/icon_call.png')}
+                                        style={styles.backImg}
+                                        source={require('../../assets/img/back_arrow.png')}
                                     />
                                 </View>
-                                <Text style={styles.callText}>Appeler</Text>
+                            </TouchableOpacity>
+                            <View style={styles.discount}>
+                                <Image
+                                    style={styles.discountImg}
+                                    source={require('../../assets/img/icons/sun.png')}
+                                />
+                                <Text style={styles.discountText}>Hier -10% aujourd'hui -20%</Text>
                             </View>
-                        </TouchableOpacity>
+                        </View>
+                        <View style={styles.info}>
+                            <View style={styles.logoBox}>
+                                <Image
+                                    style={styles.logo}
+                                    source={require('../../assets/img/sushis.png')}
+                                />
+                            </View>
+                            <View style={styles.status}>
+                                <Badge status="warning" size="large"/>
+                                <Text style={styles.statusText}>Ferme dans 1h</Text>
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.bot}>
+                        <Text style={styles.name}>Boulangerie Paul</Text>
+                        <View style={styles.summary}>
+                            <View style={styles.rate}>
+                                    <Icon
+                                        name='star'
+                                        size={hp(1.72)}
+                                        type='material-community'
+                                        color='#00ccbd'
+                                    />
+                                <Text style={styles.summaryText}>4,5</Text>
+                                <Text style={styles.summaryText}>Très bien</Text>
+                                <Text style={styles.summaryText}>(50+)</Text>
+                            </View>
+                            <TouchableOpacity
+                                onPress={()=>{Linking.openURL('tel:1234567890');}} 
+                            >
+                                <View style={styles.call}>
+                                    <View style={styles.iconCallBox}>
+                                        <Image
+                                            style={styles.iconCall}
+                                            source={require('../../assets/img/icons/icon_call.png')}
+                                        />
+                                    </View>
+                                    <Text style={styles.callText}>Appeler</Text>
+                                </View>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
-            </View>
+                <StoreInfo navigation={this.props.navigation} adress={this.props.adress} />
+             </Animated.View>
         )
     }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        position: 'absolute',
+        zIndex: 1,
+        top: 0,
+        left: 0,
+        width: '100%',
+        overflow: 'hidden'
+    },
+
     header: {
         width: '100%',
         backgroundColor: '#fff',
@@ -147,16 +162,15 @@ const styles = StyleSheet.create({
     },
 
     discountImg: {
-        height: hp(1.84),
+        height: wp(3.2),
         resizeMode: 'contain',
         marginRight: 4
     },
 
     discountText: {
         fontFamily: Fonts.Bold,
-        fontSize: hp(1.48),
-        color: '#fff',
-        lineHeight: hp(1.84)
+        fontSize: wp(3.2),
+        color: '#fff'
     },
 
     info: {

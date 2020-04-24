@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 
     title: {
         fontFamily: Fonts.Bold,
-        fontSize: hp(1.48),
+        fontSize: wp(3.2),
         color: "#a1a7b4",
         lineHeight: hp(1.84),
         marginBottom: 3
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
     greating: {
         fontFamily: Fonts.Bold,
-        fontSize: hp(1.97),
+        fontSize: wp(4.26),
         lineHeight: hp(2.95),
         color: "#142444",
         marginBottom: hp(2.21)
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
         paddingTop: hp(2.7),
         paddingBottom: hp(3.07),
         paddingHorizontal: wp(4),
-        // paddingRight: wp(5.6),
         borderRadius: 5,
         backgroundColor: "#ffffff",
         shadowColor: "rgba(0, 0, 0, 0.1)",
@@ -113,7 +112,7 @@ const styles = StyleSheet.create({
 
     text: {
         fontFamily: Fonts.Bold,
-        fontSize: hp(1.72),
+        fontSize: wp(3.73),
         lineHeight: hp(2.95),
         letterSpacing: 0,
         color: "#5a657c"

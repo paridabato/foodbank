@@ -16,7 +16,7 @@ export default class OrdersInProgress extends Component {
                     number: 2103,
                     date: '10 décembre 2019',
                     summ: 1540,
-                    currentStatus: 'terminée',
+                    currentStatus: 'confirmée',
                     statuses: [
                         {ready: 'done'},
                         {waiting: 'wait'}, 

@@ -64,7 +64,7 @@ export default class StoreDetails extends Component {
                                 <View style={styles.infoContentBox}>
                                     <View style={styles.infoIcon}>
                                         <Image
-                                            source={require('../assets/img/icons/default_small.png')}
+                                            source={require('../assets/img/icons/adress_icon.png')}
                                         />
                                     </View>
                                     <View>

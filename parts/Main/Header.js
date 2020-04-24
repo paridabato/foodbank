@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Image, StyleSheet, ScrollView } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { Header } from 'react-native-elements';
 
 import UserButton from './UserButton';
 import LeftHeader from './LeftHeader';
@@ -18,15 +17,15 @@ export default class MainHeader extends Component {
     render() {
         return(
             <View>
-                <Header
-                    statusBarProps={{ translucent: true }}
-                    backgroundImage={require('../../assets/img/header_bg.png')}
-                    backgroundImageStyle={{right: 0, top: 0, left: 'auto', bottom: 'auto', width: wp(49.06), height: hp(21.24), resizeMode: 'cover'}}
-                    leftComponent={<LeftHeader />}
-                    rightComponent={<UserButton navigation={this.props.navigation} />}
-                    containerStyle={styles.cont}
-                />
-                    <View style={{paddingTop: hp('3.5%'), paddingLeft: wp('4.3%'), borderBottomColor: 'white', borderBottomWidth: 10}}>
+                <View style={styles.cont}>
+                    <LeftHeader />
+                    <UserButton navigation={this.props.navigation} />
+                    <Image
+                        style={styles.background}
+                        source={require('../../assets/img/header_bg.png')}
+                    />
+                </View>
+                    <View style={{marginTop: -hp(5.41), paddingLeft: wp('4.3%'), borderBottomColor: 'white', borderBottomWidth: 10}}>
                         <ScrollView
                             scrollEventThrottle={16}
                             horizontal={true}
@@ -46,13 +45,26 @@ export default class MainHeader extends Component {
 
 const styles =  StyleSheet.create({
     cont: {
-        flex: 1,
+        position: 'relative',
+        width: '100%',
         flexDirection: 'row',
-        paddingTop: hp('12.25%'),
+        paddingTop: hp('7.63%'),
+        paddingBottom: hp(8.62),
         paddingHorizontal: wp('4.3%'),
-        height: hp('24.5%'),
         alignItems: 'center',
         justifyContent: 'space-between',
         backgroundColor: 'transparent'
+    },
+
+    background: {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        left: 'auto',
+        bottom: 'auto',
+        width: wp(49.06),
+        height: hp(21.24),
+        resizeMode: 'cover',
+        zIndex: -1
     }
 })

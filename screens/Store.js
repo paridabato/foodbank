@@ -1,50 +1,135 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, Animated, StyleSheet } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Button from 'react-native-button';
 import Fonts from '../assets/styles/Fonts';
 import StoreHeader from '../parts/Store/StoreHeader';
-import StoreInfo from '../parts/Store/StoreInfo.js';
+import StoreStickyHeader from '../parts/Store/StoreStickyHeader';
 import ProductCategory from '../parts/Store/ProductCategory';
 import AddToCartModal from '../parts/Tunel/AddToCartModal';
 import CartModal from '../parts/Tunel/CartModal';
 
+MAIN_MAX_HEIGHT = hp(62)
+MAIN_MIN_HEIGHT = hp(17.8)
 export default class Store extends Component {
     constructor(props){
         super(props);
         this.state={
-            category: {
-                title: 'Nos paniers',
-                products: [
+            categories: [
                     {
-                        name: 'Le petit brie', 
-                        qty: 4,
-                        desc: 'Sandwich beurre, brie, salade',
-                        discount: '-20%',
-                        oldPrice: '900 XPF',
-                        newPrice: '720 XPF'
-                    }, 
+                        title: 'Nos paniers',
+                        products: [
+                        {
+                            name: 'Le petit brie', 
+                            qty: 4,
+                            desc: 'Sandwich beurre, brie, salade',
+                            discount: '-20%',
+                            oldPrice: '900 XPF',
+                            newPrice: '720 XPF'
+                        }, 
+                        {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        }, 
+                        {
+                            name: 'Jambon emmental', 
+                            qty: 0,
+                            desc: 'Sandwich beurre, jambon blanc, emmental AOP',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        }
+                        ]
+                    },
                     {
+                        title: 'Nos sandwiches',
+                        products: [
+                        {
+                            name: 'Le petit brie', 
+                            qty: 4,
+                            desc: 'Sandwich beurre, brie, salade',
+                            discount: '-20%',
+                            oldPrice: '900 XPF',
+                            newPrice: '720 XPF'
+                        }, 
+                        {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        }
+                        ]
+                    },
+                    {
+                        title: 'Nos salades',
+                        products: [
+                            {
+                                name: 'Le petit brie', 
+                                qty: 4,
+                                desc: 'Sandwich beurre, brie, salade',
+                                discount: '-20%',
+                                oldPrice: '900 XPF',
+                                newPrice: '720 XPF'
+                            }, 
+                            {
+                                name: 'Poulet Curry', 
+                                qty: 3,
+                                desc: 'Sandwich, mayonnaise, poulet, curry',
+                                discount: false,
+                                oldPrice: '640 XPF',
+                                newPrice: '640 XPF'
+                            },
+                            {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Nos sandwiches',
+                        products: [
+                        {
+                            name: 'Le petit brie', 
+                            qty: 4,
+                            desc: 'Sandwich beurre, brie, salade',
+                            discount: '-20%',
+                            oldPrice: '900 XPF',
+                            newPrice: '720 XPF'
+                        }, 
+                        {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        },
+                        {
                         name: 'Poulet Curry', 
                         qty: 3,
                         desc: 'Sandwich, mayonnaise, poulet, curry',
                         discount: false,
                         oldPrice: '640 XPF',
                         newPrice: '640 XPF'
-                    }, 
-                    {
-                        name: 'Jambon emmental', 
-                        qty: 0,
-                        desc: 'Sandwich beurre, jambon blanc, emmental AOP',
-                        discount: false,
-                        oldPrice: '640 XPF',
-                        newPrice: '640 XPF'
-                    }
-                ]
-            },
+                        }
+                        ]
+                    },
+            ],
             enabled: false,
             cart: false,
-            cartModal: false
+            cartModal: false,
+            scrollY: new Animated.Value(0.01),
+            currentCat: 0
         }
         this.hideModal = this.hideModal.bind(this)
         this.showModal = this.showModal.bind(this)
@@ -122,14 +207,86 @@ export default class Store extends Component {
         )
     }
 
-    render(){
+    goIndex = (item) => {
+        this.flatList_Ref.getNode().scrollToIndex({ animated: true, index: item });
+    };
+
+    onViewableItemsChanged = ({ viewableItems, changed }) => {
+        this.setState(prevState => ({
+            currentCat: viewableItems.length > 0 ?
+                viewableItems[0].index !== prevState.currentCat ?
+                    viewableItems[0].index
+                    :
+                    prevState.currentCat
+                :
+                prevState.currentCat
+        }))
+    }
+    render() {
+        console.log('Current indfex: ' + this.state.currentCat);
+        const headerHeight = this.state.scrollY.interpolate({
+            inputRange:[0, 40],
+            outputRange: [MAIN_MAX_HEIGHT, MAIN_MIN_HEIGHT],
+            extrapolate: 'clamp'
+
+        })
+        const headerOpacity = this.state.scrollY.interpolate({
+            inputRange: [0, 30],
+            outputRange: [1, 0],
+            extrapolate: 'clamp'
+        })
+
+        const stickyOpacity = this.state.scrollY.interpolate({
+            inputRange: [0, 10],
+            outputRange: [0, 1],
+            extrapolate: 'clamp'
+        })
+
+        const padding = this.state.scrollY.interpolate({
+            inputRange: [0, 40],
+            outputRange: [MAIN_MAX_HEIGHT, MAIN_MIN_HEIGHT],
+            extrapolate: 'clamp'
+        })
+
+        const zIndex = this.state.scrollY.interpolate({
+            inputRange: [0.01, 20],
+            outputRange: [0, 2],
+            extrapolate: 'clamp'
+        })
         return(
             <View style={styles.container}>
-                <ScrollView>
-                    <StoreHeader navigation={this.props.navigation} />
-                    <StoreInfo navigation={this.props.navigation} adress={'12 rue des Hallebardes, Noumé…'} />
-                    <ProductCategory handler={this.showModal} catName={this.state.category.title} products={this.state.category.products} />
-                    <View style={[styles.warning,  {paddingBottom: this.state.cart ? hp(17.24) : 0}]}>
+                    <StoreHeader 
+                        navigation={this.props.navigation} 
+                        adress={'12 rue des Hallebardes, Noumé…'} 
+                        height={headerHeight}
+                        opacity={headerOpacity} 
+                    />
+                    <StoreStickyHeader 
+                        navigation={this.props.navigation}  
+                        categories={this.state.categories}
+                        opacity={stickyOpacity}
+                        zIndex={zIndex}
+                        onClick={this.goIndex}
+                        currentCat={this.state.currentCat}
+                    />
+                    <View >
+                    <Animated.FlatList
+                        style={{paddingTop: padding}}
+                        contentContainerStyle={{ paddingBottom: hp(40) }}
+                        data={this.state.categories}
+                        ref={ref => {this.flatList_Ref = ref; }}
+                        onScroll={Animated.event(
+                            [{nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
+                        )}
+                        onViewableItemsChanged={this.onViewableItemsChanged}
+                        viewabilityConfig={{itemVisiblePercentThreshold: 60}}
+                        renderItem={({item,index}) =>
+                            <ProductCategory handler={this.showModal} category={item} />
+                        }
+                        keyExtractor={(item, index) => index.toString()}
+                        />
+                    </View>
+                    <View style={[styles.warning,  {paddingBottom: this.state.cart ? hp(28) : hp(14)}]}>
                         <Text style={styles.warningText}>Si vous souffrez d’allergies alimentaires ou si vous suivez un régime spécifique adressez vous directement au commerçant</Text>
                         <View style={styles.linkBox}>
                             <TouchableOpacity>
@@ -137,10 +294,9 @@ export default class Store extends Component {
                             </TouchableOpacity>
                         </View>
                     </View>
-                </ScrollView>
+                {this.state.cart ? this.cart() : null}
                 <AddToCartModal enabled={this.state.enabled} cart={this.showCart} handler={this.hideModal}/>
                 <CartModal navigation={this.props.navigation} buy={this.buyButton} enabled={this.state.cartModal} handler={this.showHideCartModal}/>
-                {this.state.cart ? this.cart() : null}
             </View>
         )
     }
@@ -148,7 +304,9 @@ export default class Store extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#eee'
+        flex:1,
+        backgroundColor: '#eee',
+        position: 'relative'
     },
 
     warning: {
@@ -200,8 +358,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: hp(6.89),
         borderRadius: hp(0.61),
-        backgroundColor: "#00ccbd",
-        
+        backgroundColor: "#00ccbd"
     },
 
     buttonInner: {

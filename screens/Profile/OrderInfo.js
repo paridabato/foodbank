@@ -57,7 +57,7 @@ export default class OrderInfo extends Component {
                     <View style={styles.content}>
                         <OrderInfoTop order={this.state.order} />
                         <ScrollView>
-                            <OrderStatus order={this.state.order} />
+                            <OrderStatus order={this.state.order} navigation={this.props.navigation}/>
                             <OrderStoreInfo order={this.state.order} />
                             <OrderCheck handler ={this.modalSwitcher} navigation={this.props.navigation} order={this.state.order} />
                         </ScrollView>

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet, StatusBar } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet, StatusBar, Dimensions } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Fonts from '../../assets/styles/Fonts';
 import OrdersDone from '../../parts/Profile/OrdersDone';
 import OrdersInProgress from '../../parts/Profile/OrdersInProgress';
+
+const windowHeight = Dimensions.get('window').height;
 
 function MyTabBar({ state, descriptors, navigation, position }) {
     return (
@@ -164,8 +166,8 @@ const styles = StyleSheet.create({
 
     tabText: {
         fontFamily: Fonts.Bold,
-        fontSize: 14,
-        lineHeight: 18,
+        fontSize: hp(1.72),
+        lineHeight: hp(2.21),
         textAlign: "center",
     },
 

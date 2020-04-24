@@ -106,6 +106,7 @@ export default class UserPayment extends Component {
                     </View>
                     <View style={styles.content}>
                         <Carousel
+                            removeClippedSubviews={false}
                             containerCustomStyle={{overflow: 'visible', flexGrow: 0}}
                             contentContainerCustomStyle={{overflow: 'visible'}}
                             slideStyle={{overflow: 'visible'}}

@@ -8,16 +8,16 @@ export default class StoreCard extends Component {
     constructor(props){
         super(props);
         this.state={
-            img: props.img,
-            discount: props.discount,
-            status: props.status,
-            logo: props.logo,
-            name: props.name,
-            category: props.category,
-            distance: props.distance,
-            rating: props.rating,
-            counter: props.counter,
-            fw: props.fw
+            img: props.store.img,
+            discount: props.store.discount,
+            status: props.store.status,
+            logo: props.store.logo,
+            name: props.store.name,
+            category: props.store.category,
+            distance: props.store.distance,
+            rating: props.store.rating,
+            counter: props.store.counter,
+            fw: props.store.fw
         }
     }
 
@@ -25,6 +25,7 @@ export default class StoreCard extends Component {
         return(
             <View style={this.state.fw ? styles.fwCard : styles.card }>
                 <TouchableOpacity
+                    activeOpacity={0.7}
                     onPress={()=>this.props.navigation.navigate('Store')}
                 >
                     <View style={styles.top}>

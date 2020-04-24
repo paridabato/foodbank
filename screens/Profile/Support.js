@@ -41,8 +41,8 @@ export default class Support extends Component {
                             <Text style={styles.text}>Nous écrire</Text>
                             <View style={styles.qustionBox}>
                                 <Image
-                                    style={styles.qustion}
-                                    source={require('../../assets/img/icons/qustion.png')}
+                                    style={styles.arrow_next}
+                                    source={require('../../assets/img/back_arrow_grey.png')}
                                 />
                             </View>
                         </View>
@@ -52,8 +52,8 @@ export default class Support extends Component {
                             <Text style={styles.text}>Nous appeler</Text>
                             <View style={styles.qustionBox}>
                                 <Image
-                                    style={styles.qustion}
-                                    source={require('../../assets/img/icons/qustion.png')}
+                                    style={styles.arrow_next}
+                                    source={require('../../assets/img/back_arrow_grey.png')}
                                 />
                             </View>
                         </View>
@@ -66,8 +66,8 @@ export default class Support extends Component {
                             <Text style={styles.text}>Voir les questions fréquentes</Text>
                             <View style={styles.qustionBox}>
                                 <Image
-                                    style={styles.qustion}
-                                    source={require('../../assets/img/icons/qustion.png')}
+                                    style={styles.arrow_next}
+                                    source={require('../../assets/img/back_arrow_grey.png')}
                                 />
                             </View>
                         </View>
@@ -190,10 +190,10 @@ const styles = StyleSheet.create({
         height: hp(2.7)
     },
 
-    qustion: {
-        width: '100%',
-        height: '100%',
-        resizeMode: 'contain'
+    arrow_next: {
+        transform: [{
+            rotate: '180deg'
+        }]
     },
 
     linksBox: {

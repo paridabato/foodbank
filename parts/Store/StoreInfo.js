@@ -40,8 +40,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         paddingHorizontal: 16,
         paddingBottom: hp(3.07),
-        paddingTop: hp(2.7),
-        marginBottom: hp(4.43)
+        paddingTop: hp(2.7)
     },
 
     title: {

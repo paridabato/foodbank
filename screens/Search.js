@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Fonts from '../assets/styles/Fonts';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import SwipeUpDown from 'react-native-swipe-up-down';
+import BottomDrawer  from 'rn-bottom-sheet';
+import SearchHeader from '../parts/Search/SearchHeader';
+import SearchResult from '../parts/Search/SearchResult';
+import SearchStoreList from '../parts/Search/SearchStoreList';
+import SearchMenuCats from '../parts/Search/SearchMenuCats';
+import { navigationRef } from '../RootNavigation';
+import SearchSettings from '../parts/Search/SearchSettings';
+
+const SearchStack = createStackNavigator();
 
 export default class Search extends Component {
   constructor(props) {
@@ -13,9 +23,51 @@ export default class Search extends Component {
             latitude: -22.276425, 
             longitude :166.447334
         },
+        searchActive: false,
+        enabled: false
     };
+    this.hideModal = this.hideModal.bind(this);
+    this.showModal = this.showModal.bind(this);
+    this.toggleDrawer = this.toggleDrawer.bind(this);
+    this.showDrawer = this.showDrawer.bind(this);
   }
 
+  collapseSearch() {
+      this.setState({
+          searchActive: false
+      });
+  }
+
+  expandSearch() {
+      this.setState({
+          searchActive: true
+      })
+  }
+
+  hideModal() {
+    this.setState({
+        enabled: false
+    })
+}
+
+showModal() {
+    this.setState({
+        enabled: true
+    })
+}
+    
+toggleDrawer() {
+    this.drawer.toggleDrawerState();
+}
+
+showDrawer() {
+    this.drawer.openBottomDrawer();
+}
+
+hideDrawer() {
+    this.drawer.closeBottomDrawer();
+}
+    
   render() {
     return (
       <View style={styles.container}>
@@ -29,8 +81,10 @@ export default class Search extends Component {
                     source={require('../assets/img/back_arrow.png')}
                 />
               </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.miidleButton}
+                <TouchableOpacity
+                    activeOpacity={0.6}
+                    style={styles.miidleButton}
+                    onPress={()=>this.props.navigation.navigate('Location')}
               >
                 <Text style={styles.miidleButtonText}>Nouméa, 98800</Text>
                 <Image
@@ -67,6 +121,56 @@ export default class Search extends Component {
                     </Marker>
                 </MapView>
             </View>
+            <BottomDrawer
+                ref={ref => this.drawer = ref}
+                containerHeight={hp(93)}
+                downDisplay={hp(63)}
+                startUp={this.state.searchActive}
+                roundedEdges={true}
+                onCollapsed={()=>this.collapseSearch()}
+                onExpanded={() => this.expandSearch()}
+            >
+                <SearchHeader
+                    showModal={this.showModal}
+                    navigation={this.props.navigation}
+                    touchHandler={this.toggleDrawer}
+                    inputActive={this.showDrawer}
+                />
+                <NavigationContainer
+                    ref={navigationRef}
+                    independent={true}
+                >
+                    <SearchStack.Navigator
+                        initialRouteName="SearchMenuCats"
+                        screenOptions={{
+                            headerShown: false
+                        }}
+                    >
+                        <SearchStack.Screen
+                            name="SearchResult"
+                            component={SearchResult}
+                            options={{
+                                headerShown: false
+                            }}
+                        />
+                        <SearchStack.Screen
+                            name="SearchStoreList"
+                            component={SearchStoreList}
+                            options={{
+                                headerShown: false
+                            }}
+                        />
+                        <SearchStack.Screen
+                            name="SearchMenuCats"
+                            component={SearchMenuCats}
+                            options={{
+                                headerShown: false
+                            }}
+                        />
+                    </SearchStack.Navigator>
+                </NavigationContainer>
+            </BottomDrawer>
+            <SearchSettings enabled={this.state.enabled} handler={this.hideModal}/>
       </View>
     );
   }
@@ -87,7 +191,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        zIndex: 10
+        zIndex: 0
     },
 
     roundButton: {
@@ -155,10 +259,11 @@ const styles = StyleSheet.create({
         height: hp(70.44),
         justifyContent: 'flex-end',
         alignItems: 'center',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        zIndex: -1
     },
 
     map: {
         ...StyleSheet.absoluteFillObject,
-    },
+    }
 })

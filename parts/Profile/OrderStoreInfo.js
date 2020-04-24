@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import Fonts from '../../assets/styles/Fonts';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
@@ -29,6 +29,13 @@ export default class OrderStoreInfo extends Component {
                             <Text style={styles.infoAdress}>{this.props.order.adress2}</Text>
                         </View>
                     </View>
+                    {this.props.order.statuses[2].finished != 'done' ?
+                        <TouchableOpacity>
+                            <Text style={styles.link}>Itinéraire</Text>
+                        </TouchableOpacity>
+                        :
+                        null
+                    }
                 </View>
             </View>
         )
@@ -73,5 +80,11 @@ const styles = StyleSheet.create({
         fontSize: hp(1.97),
         lineHeight: hp(1.97),
         color: "#5a657c"
+    },
+
+    link: {
+        fontFamily: Fonts.Bold,
+        fontSize: hp(1.72),
+        color: "#00ccbd"
     }
 })

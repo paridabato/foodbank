@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     link: {
         fontFamily: Fonts.Bold,
         fontSize: hp(1.72),
-        color: "#555555"
+        color: "#00ccbd"
     },
 
     items: {

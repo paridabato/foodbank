@@ -16,31 +16,31 @@ export default class Main extends Component {
 
     render(){
         return(
-            <View style={{backgroundColor: 'white'}}>
-            <StatusBar translucent backgroundColor="#142444"/>
+            <View style={styles.container}>
+            <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.0)" barStyle="dark-content"/>
             <Header navigation={this.props.navigation} />
-                <SafeAreaView>
-                    <View style={{position: 'relative', height: '100%'}}>
-                    <ScrollView>
-                            <Offer />
-                            <Category navigation={this.props.navigation} category_name={'Dernières chances'} />
-                            <Category navigation={this.props.navigation} category_name={'Offres en cours'} />
-                            <Category navigation={this.props.navigation} category_name={'Les nouveaux fooders'} />
-                            <Category navigation={this.props.navigation} category_name={'Dernières chances'} />
-                            <Category navigation={this.props.navigation} category_name={'Offres en cours'} />
-                            <Category navigation={this.props.navigation} category_name={'Les nouveaux fooders'} />
-                            <View style={styles.container}></View>
-                    </ScrollView>
-                    <TouchableOpacity style={styles.mapBox}
-                        onPress={()=>this.props.navigation.navigate('Search')}
-                    >
-                        <Image
-                            style={styles.mapIcon}
-                            source={require('../assets/img/icons/map_icon.png')}
-                        />
-                    </TouchableOpacity>
+                    <View style={{position: 'relative', flex: 1}}>
+                        <ScrollView>
+                            <View style={{paddingBottom: hp(10)}}>
+                                <Offer />
+                                <Category navigation={this.props.navigation} category_name={'Dernières chances'} />
+                                <Category navigation={this.props.navigation} category_name={'Offres en cours'} />
+                                <Category navigation={this.props.navigation} category_name={'Les nouveaux fooders'} />
+                                <Category navigation={this.props.navigation} category_name={'Dernières chances'} />
+                                <Category navigation={this.props.navigation} category_name={'Offres en cours'} />
+                                <Category navigation={this.props.navigation} category_name={'Les nouveaux fooders'} />
+                                {/* <View style={styles.container}></View> */}
+                            </View>
+                        </ScrollView>
+                        <TouchableOpacity style={styles.mapBox}
+                            onPress={()=>this.props.navigation.navigate('Search')}
+                        >
+                            <Image
+                                style={styles.mapIcon}
+                                source={require('../assets/img/icons/map_icon.png')}
+                            />
+                        </TouchableOpacity>
                     </View>
-                </SafeAreaView>
             </View>
         )
     }
@@ -48,12 +48,13 @@ export default class Main extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        height: 600
+        flex: 1,
+        backgroundColor: 'white'
     },
 
     mapBox: {
         position: 'absolute',
-        bottom: 540,
+        bottom: hp(5),
         right: 20,
         width:56,
         height: 56,

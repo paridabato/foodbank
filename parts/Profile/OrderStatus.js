@@ -68,7 +68,9 @@ export default class OrderStatus extends Component {
             <View style={styles.container}>
                 <View style={styles.head}>
                     <Text style={styles.title}>Statut de la commande</Text>
-                    <TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={()=>this.props.navigation.navigate('Support')}
+                    >
                         <Text style={styles.support}>Support</Text>
                     </TouchableOpacity>
                 </View>
@@ -119,7 +121,7 @@ const styles = StyleSheet.create({
    item: {
        flexDirection: 'row',
        alignItems: 'center',
-       height: hp(5.91)
+       height: wp(12.8)
    },
 
    itemIconBox: {
@@ -178,14 +180,14 @@ const styles = StyleSheet.create({
 
    itemText: {
         fontFamily: Fonts.Regular,
-        fontSize: hp(1.97),
+       fontSize: wp(4.26),
         lineHeight: hp(2.95),
         color: "#5a657c"
    },
 
    itemContentTextBold: {
        fontFamily: Fonts.Bold,
-       fontSize: hp(1.97),
+       fontSize: wp(4.26),
        color: '#142444'
    }
 })

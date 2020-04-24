@@ -1,16 +1,61 @@
 import React, { Component } from 'react';
-import { Text, View, Image, ScrollView, StyleSheet } from 'react-native';
+import { Text, View, Image, FlatList, StyleSheet,TouchableOpacity } from 'react-native';
 import Fonts from '../../assets/styles/Fonts';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 import StoreCard from '../../parts/StoreCard';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category_name: props.category_name
+            category_name: props.category_name,
+            stores: [
+                {
+                    counter: '8 invendus',
+                    rating: '4,5 (50+)',
+                    distance: '1,2km',
+                    name: 'Yapan Sushi - Nuée bleue',
+                    category: 'Sushis - soupes - salades',
+                    logo: require('../../assets/img/burgers.png'),
+                    status: 'Ferme dans 1h',
+                    discount: 'Plus que 1h pour profiter des -20%',
+                    img: require('../../assets/img/store_image.png')
+                },
+                {
+                    counter: '8 invendus',
+                    rating: '4,5 (50+)',
+                    distance: '1,2km',
+                    name: 'Yapan Sushi - Nuée bleue',
+                    category: 'Sushis - soupes - salades',
+                    logo: require('../../assets/img/burgers.png'),
+                    status: 'Ferme dans 1h',
+                    discount: 'Plus que 1h pour profiter des -20%',
+                    img: require('../../assets/img/store_image.png')
+                },
+                {
+                    counter: '8 invendus',
+                    rating: '4,5 (50+)',
+                    distance: '1,2km',
+                    name: 'Yapan Sushi - Nuée bleue',
+                    category: 'Sushis - soupes - salades',
+                    logo: require('../../assets/img/burgers.png'),
+                    status: 'Ferme dans 1h',
+                    discount: 'Plus que 1h pour profiter des -20%',
+                    img: require('../../assets/img/store_image.png')
+                },
+                {
+                    counter: '8 invendus',
+                    rating: '4,5 (50+)',
+                    distance: '1,2km',
+                    name: 'Yapan Sushi - Nuée bleue',
+                    category: 'Sushis - soupes - salades',
+                    logo: require('../../assets/img/burgers.png'),
+                    status: 'Ferme dans 1h',
+                    discount: 'Plus que 1h pour profiter des -20%',
+                    img: require('../../assets/img/store_image.png')
+                },
+            ]
         }
     }
 
@@ -31,59 +76,18 @@ export default class Category extends Component {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.wrapper}>
-                    <ScrollView 
+                    <FlatList 
                         horizontal
                         showsHorizontalScrollIndicator={false}
-                        decelerationRate={0}
-                        snapToAlignment={"center"}>
+                        data={this.state.stores}
+                        keyExtractor={(item,index) => index.toString()}
+                        renderItem={({ item: row, index }) =>
                             <StoreCard
-                            navigation={this.props.navigation}
-                            counter={'8 invendus'}
-                            rating={'4,5 (50+)'}
-                            distance={'1,2km'}
-                            name={'Yapan Sushi - Nuée bleue'}
-                            category={'Sushis - soupes - salades'}
-                            logo={require('../../assets/img/burgers.png')}
-                            status={'Ferme dans 1h'}
-                            discount={'Plus que 1h pour profiter des -20%'}
-                            img={require('../../assets/img/store_image.png')} />
-
-                            <StoreCard
-                            navigation={this.props.navigation}
-                            counter={'8 invendus'}
-                            rating={'4,5 (50+)'}
-                            distance={'1,2km'}
-                            name={'Yapan Sushi - Nuée bleue'}
-                            category={'Sushis - soupes - salades'}
-                            logo={require('../../assets/img/burgers.png')}
-                            status={'Ferme dans 1h'}
-                            discount={'Plus que 1h pour profiter des -20%'}
-                            img={require('../../assets/img/store_image.png')} />
-
-                            <StoreCard
-                            navigation={this.props.navigation}
-                            counter={'8 invendus'}
-                            rating={'4,5 (50+)'}
-                            distance={'1,2km'}
-                            name={'Yapan Sushi - Nuée bleue'}
-                            category={'Sushis - soupes - salades'}
-                            logo={require('../../assets/img/burgers.png')}
-                            status={'Ferme dans 1h'}
-                            discount={'Plus que 1h pour profiter des -20%'}
-                            img={require('../../assets/img/store_image.png')} />
-
-                            <StoreCard
-                            navigation={this.props.navigation}
-                            counter={'8 invendus'}
-                            rating={'4,5 (50+)'}
-                            distance={'1,2km'}
-                            name={'Yapan Sushi - Nuée bleue'}
-                            category={'Sushis - soupes - salades'}
-                            logo={require('../../assets/img/burgers.png')}
-                            status={'Ferme dans 1h'}
-                            discount={'Plus que 1h pour profiter des -20%'}
-                            img={require('../../assets/img/store_image.png')} />
-                        </ScrollView>
+                                navigation={this.props.navigation}
+                                store={row}
+                            />
+                        }
+                    />
                     </View>
                 </View>
             )
@@ -110,7 +114,7 @@ const styles = StyleSheet.create({
 
     title: {
         fontFamily: Fonts.Bold,
-        fontSize: hp(1.97),
+        fontSize: wp(4.26),
         lineHeight: hp(2.95),
         color: '#142444'
     },

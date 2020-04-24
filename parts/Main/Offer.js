@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     cont: {
         marginTop: hp(2.95),
         width: '100%',
-        height: hp(14.77),
+        height: wp(32),
         borderRadius: 5,
         backgroundColor: 'linear-gradient(45deg, rgba(0,204,189,1) 0%, rgba(0,217,201,1) 100%)',
         position: 'relative',

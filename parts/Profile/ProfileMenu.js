@@ -23,8 +23,8 @@ export default class ProfileMenu extends Component {
                             </View>
                             <View style={styles.iconBox}>
                                     <Image
-                                        style={styles.image}
-                                        source={require('../../assets/img/icons/qustion.png')}
+                                        style={styles.arrow_next}
+                                        source={require('../../assets/img/back_arrow_grey.png')}
                                     />
                                 </View>
                         </View>
@@ -43,9 +43,9 @@ export default class ProfileMenu extends Component {
                                 <Text style={styles.text}>Mes informations</Text>
                             </View>
                             <View style={styles.iconBox}>
-                                    <Image
-                                        style={styles.image}
-                                        source={require('../../assets/img/icons/qustion.png')}
+                                   <Image
+                                        style={styles.arrow_next}
+                                        source={require('../../assets/img/back_arrow_grey.png')}
                                     />
                                 </View>
                         </View>
@@ -64,9 +64,9 @@ export default class ProfileMenu extends Component {
                                 <Text style={styles.text}>Moyens de paiement</Text>
                             </View>
                             <View style={styles.iconBox}>
-                                    <Image
-                                        style={styles.image}
-                                        source={require('../../assets/img/icons/qustion.png')}
+                                   <Image
+                                        style={styles.arrow_next}
+                                        source={require('../../assets/img/back_arrow_grey.png')}
                                     />
                                 </View>
                         </View>
@@ -85,9 +85,9 @@ export default class ProfileMenu extends Component {
                                 <Text style={styles.text}>Notifications</Text>
                             </View>
                             <View style={styles.iconBox}>
-                                    <Image
-                                        style={styles.image}
-                                        source={require('../../assets/img/icons/qustion.png')}
+                                   <Image
+                                        style={styles.arrow_next}
+                                        source={require('../../assets/img/back_arrow_grey.png')}
                                     />
                                 </View>
                         </View>
@@ -108,10 +108,10 @@ export default class ProfileMenu extends Component {
                                     <Text style={styles.text}>Support</Text>
                                 </View>
                                 <View style={styles.iconBox}>
-                                        <Image
-                                            style={styles.image}
-                                            source={require('../../assets/img/icons/qustion.png')}
-                                        />
+                                    <Image
+                                        style={styles.arrow_next}
+                                        source={require('../../assets/img/back_arrow_grey.png')}
+                                    />
                                     </View>
                             </View>
                         </TouchableOpacity>
@@ -178,5 +178,11 @@ const styles = StyleSheet.create({
 
     top: {
         marginBottom: hp(2.95)
+    },
+
+    arrow_next: {
+        transform: [{
+            rotate: '180deg'
+        }]
     }
 })

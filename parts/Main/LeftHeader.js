@@ -58,7 +58,7 @@ const styles  =  StyleSheet.create({
 
     botText: {
         fontFamily: Fonts.Bold,
-        fontSize: 16,
+        fontSize: hp(1.97),
         color: '#142444'
     }
 })

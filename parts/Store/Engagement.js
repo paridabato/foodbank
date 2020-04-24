@@ -26,7 +26,7 @@ export default class Engagement extends Component {
                         <View style={styles.imageBox}>
                             <Image
                                 style={styles.image}
-                                source={require('../../assets/img/icons/default_small.png')}
+                                source={require('../../assets/img/engage.png')}
                             />
                         </View>
                         <View style={styles.textBox}>
@@ -38,7 +38,7 @@ export default class Engagement extends Component {
                         <View style={styles.imageBox}>
                             <Image
                                 style={styles.image}
-                                source={require('../../assets/img/icons/default_small.png')}
+                                source={require('../../assets/img/icons/product_saved.png')}
                             />
                         </View>
                         <View style={styles.textBox}>
@@ -75,8 +75,8 @@ const styles = StyleSheet.create({
     },
 
     imageBox: {
-        width: 32,
-        height: 28,
+        width: 40,
+        height: 40,
         marginRight: 30,
         marginLeft: 24
     },

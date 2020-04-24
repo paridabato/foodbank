@@ -12,7 +12,6 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		24294C8FF2984127A16632F3 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA3153885D44B4692BF967C /* Quicksand-Bold.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -20,9 +19,10 @@
 		35631FCD386231C854B6CA26 /* libPods-FoodBankTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 54AF39FEDC798AC56BAD6344 /* libPods-FoodBankTests.a */; };
 		78066AF3E5402D65BFD83CCA /* libPods-FoodBank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 158899B4140C2C7ABDCAFD24 /* libPods-FoodBank.a */; };
 		98124F37577257A95F754C14 /* libPods-FoodBank-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C449F688C94322C80A6EFFE5 /* libPods-FoodBank-tvOSTests.a */; };
-		AC8C713C77FD4F7298BDC26F /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BFE4529B1614DF99F5AEB57 /* Quicksand-Regular.ttf */; };
 		B58D9BE25708D7C94EBFA6FC /* libPods-FoodBank-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B5C841C95E5A5F407DF17CD /* libPods-FoodBank-tvOS.a */; };
-		C6932A8B5EAC49FBA97EC753 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE78F8CCF39F4CB793226A98 /* Quicksand-Medium.ttf */; };
+		FA52AB9E24488C69005D7330 /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FCA3153885D44B4692BF967C /* Quicksand-Bold.ttf */; };
+		FA52AB9F24488C69005D7330 /* Quicksand-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FE78F8CCF39F4CB793226A98 /* Quicksand-Medium.ttf */; };
+		FA52ABA024488C69005D7330 /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BFE4529B1614DF99F5AEB57 /* Quicksand-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,10 @@
 		00E356EE1AD99517003FC87E /* FoodBankTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodBankTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* FoodBankTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodBankTests.m; sourceTree = "<group>"; };
-		0BFE4529B1614DF99F5AEB57 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Regular.ttf"; path = "../assets/fonts/Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		0A8E236CAFDF4A3A9AB70260 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		0BFE4529B1614DF99F5AEB57 /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Regular.ttf"; path = "../assets/fonts/Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		0CD506AA792D4E5BBB7E999B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		0E8B7986D08C4A2FB7857B47 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* FoodBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FoodBank/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FoodBank/AppDelegate.m; sourceTree = "<group>"; };
@@ -55,24 +58,37 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FoodBank/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FoodBank/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FoodBank/main.m; sourceTree = "<group>"; };
+		1579CC8D292249909E9628C2 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		158899B4140C2C7ABDCAFD24 /* libPods-FoodBank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodBank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A39D567807743B48357A37E /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* FoodBank-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FoodBank-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* FoodBank-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FoodBank-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32457BA2AF8F319B648810D3 /* Pods-FoodBank-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBank-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-FoodBank-tvOS/Pods-FoodBank-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3952362BC723CF66E937BF38 /* Pods-FoodBank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBank.release.xcconfig"; path = "Target Support Files/Pods-FoodBank/Pods-FoodBank.release.xcconfig"; sourceTree = "<group>"; };
+		40291D7F687D4BCE8A027E5A /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		44F0BE1B61024262809DF9D4 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		4B643ACA8A1641A231460955 /* Pods-FoodBank-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBank-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodBank-tvOSTests/Pods-FoodBank-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		518DDE22D51A4453920DFBAC /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		54AF39FEDC798AC56BAD6344 /* libPods-FoodBankTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodBankTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		577B34B08B08AFED682695F5 /* Pods-FoodBankTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBankTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodBankTests/Pods-FoodBankTests.debug.xcconfig"; sourceTree = "<group>"; };
 		67DA1084E3F54E78A2918789 /* Pods-FoodBankTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBankTests.release.xcconfig"; path = "Target Support Files/Pods-FoodBankTests/Pods-FoodBankTests.release.xcconfig"; sourceTree = "<group>"; };
+		7B3BFB5887E74EF484B90F5B /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		7BCC65C82D8D49BB8D644116 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		8B5C841C95E5A5F407DF17CD /* libPods-FoodBank-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodBank-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		964D193442D64EBAA3B88780 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		9F150CD1C6DA3CD711FCCF72 /* Pods-FoodBank-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBank-tvOS.release.xcconfig"; path = "Target Support Files/Pods-FoodBank-tvOS/Pods-FoodBank-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		A5032C208C834A938693A82E /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		AD3BABDA7B8F4C3D8C8B9065 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		C449F688C94322C80A6EFFE5 /* libPods-FoodBank-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FoodBank-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7CBBCF075194A6DB62F8AAF /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		C7D42CE95F00419782C9ACCD /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		D5C8721BBE2C460E9B626081 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		EE1B647B6F24FAB135EEBF1A /* Pods-FoodBank-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBank-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-FoodBank-tvOSTests/Pods-FoodBank-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		F5F527A873B3B3940EF133C0 /* Pods-FoodBank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodBank.debug.xcconfig"; path = "Target Support Files/Pods-FoodBank/Pods-FoodBank.debug.xcconfig"; sourceTree = "<group>"; };
-		FCA3153885D44B4692BF967C /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Bold.ttf"; path = "../assets/fonts/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
-		FE78F8CCF39F4CB793226A98 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Medium.ttf"; path = "../assets/fonts/Quicksand-Medium.ttf"; sourceTree = "<group>"; };
+		FCA3153885D44B4692BF967C /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Bold.ttf"; path = "../assets/fonts/Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		FE78F8CCF39F4CB793226A98 /* Quicksand-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Quicksand-Medium.ttf"; path = "../assets/fonts/Quicksand-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,9 +177,24 @@
 				FCA3153885D44B4692BF967C /* Quicksand-Bold.ttf */,
 				FE78F8CCF39F4CB793226A98 /* Quicksand-Medium.ttf */,
 				0BFE4529B1614DF99F5AEB57 /* Quicksand-Regular.ttf */,
+				D5C8721BBE2C460E9B626081 /* AntDesign.ttf */,
+				0E8B7986D08C4A2FB7857B47 /* Entypo.ttf */,
+				40291D7F687D4BCE8A027E5A /* EvilIcons.ttf */,
+				7B3BFB5887E74EF484B90F5B /* Feather.ttf */,
+				C7D42CE95F00419782C9ACCD /* FontAwesome.ttf */,
+				2A39D567807743B48357A37E /* FontAwesome5_Brands.ttf */,
+				518DDE22D51A4453920DFBAC /* FontAwesome5_Regular.ttf */,
+				0A8E236CAFDF4A3A9AB70260 /* FontAwesome5_Solid.ttf */,
+				C7CBBCF075194A6DB62F8AAF /* Fontisto.ttf */,
+				A5032C208C834A938693A82E /* Foundation.ttf */,
+				44F0BE1B61024262809DF9D4 /* Ionicons.ttf */,
+				964D193442D64EBAA3B88780 /* MaterialCommunityIcons.ttf */,
+				0CD506AA792D4E5BBB7E999B /* MaterialIcons.ttf */,
+				1579CC8D292249909E9628C2 /* Octicons.ttf */,
+				7BCC65C82D8D49BB8D644116 /* SimpleLineIcons.ttf */,
+				AD3BABDA7B8F4C3D8C8B9065 /* Zocial.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		782C98DA378EC6A30A5379C2 /* Pods */ = {
@@ -178,7 +209,6 @@
 				577B34B08B08AFED682695F5 /* Pods-FoodBankTests.debug.xcconfig */,
 				67DA1084E3F54E78A2918789 /* Pods-FoodBankTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -309,7 +339,12 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = RJ53DLXG28;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = RJ53DLXG28;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -327,6 +362,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -355,11 +391,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA52AB9E24488C69005D7330 /* Quicksand-Bold.ttf in Resources */,
+				FA52AB9F24488C69005D7330 /* Quicksand-Medium.ttf in Resources */,
+				FA52ABA024488C69005D7330 /* Quicksand-Regular.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				24294C8FF2984127A16632F3 /* Quicksand-Bold.ttf in Resources */,
-				C6932A8B5EAC49FBA97EC753 /* Quicksand-Medium.ttf in Resources */,
-				AC8C713C77FD4F7298BDC26F /* Quicksand-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,7 +429,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -655,6 +691,8 @@
 			baseConfigurationReference = 577B34B08B08AFED682695F5 /* Pods-FoodBankTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = RJ53DLXG28;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -678,7 +716,9 @@
 			baseConfigurationReference = 67DA1084E3F54E78A2918789 /* Pods-FoodBankTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = RJ53DLXG28;
 				INFOPLIST_FILE = FoodBankTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -698,8 +738,12 @@
 			baseConfigurationReference = F5F527A873B3B3940EF133C0 /* Pods-FoodBank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = RJ53DLXG28;
 				INFOPLIST_FILE = FoodBank/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -707,8 +751,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bato.foodbank;
 				PRODUCT_NAME = FoodBank;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -718,7 +763,12 @@
 			baseConfigurationReference = 3952362BC723CF66E937BF38 /* Pods-FoodBank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = RJ53DLXG28;
 				INFOPLIST_FILE = FoodBank/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -726,8 +776,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bato.foodbank;
 				PRODUCT_NAME = FoodBank;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -869,7 +920,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -922,7 +973,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

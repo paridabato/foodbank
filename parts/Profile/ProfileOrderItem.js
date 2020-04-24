@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Icon } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Fonts from '../../assets/styles/Fonts';
 
@@ -25,15 +26,37 @@ export default class ProfileOrderItem extends Component {
                     </View>
                     <View style={styles.content}>
                         <Text style={styles.name}>{this.state.order.store}</Text>
-                        <Text style={styles.info}>n°{this.state.order.number} - {this.state.order.date}</Text>
+                        <Text style={styles.info}>n°{this.state.order.number} - {this.state.order.statuses[2].finished == 'done' ? this.state.order.date : 'À retirer'}</Text>
                         <Text style={styles.summ}>{this.state.order.summ} XPF</Text>
                     </View>
+                    {this.state.order.statuses[2].finished == 'done' ?
                     <View style={styles.iconBox}>
                         <Image
-                            style={styles.icon}
-                            source={require('../../assets/img/icons/qustion.png')}
+                            style={styles.arrow_next}
+                            source={require('../../assets/img/back_arrow_grey.png')}
                         />
                     </View>
+                    :
+                    <View style={styles.altCont}>
+                        <View>
+                            <View style={styles.availableButton}>
+                                <Icon
+                                    name='briefcase'
+                                    size={14}
+                                    type='material-community'
+                                    color='rgba(255, 255, 255, 0.5)'
+                                />
+                                <Text style={styles.text}>À retirer</Text>
+                            </View>
+                        </View>
+                        <View style={styles.iconBox}>
+                            <Image
+                                style={styles.arrow_next}
+                                source={require('../../assets/img/back_arrow_grey.png')}
+                            />
+                        </View>
+                    </View>
+                    }
                 </View>
             </TouchableOpacity>
         )
@@ -98,9 +121,35 @@ const styles = StyleSheet.create({
         marginLeft: 'auto'
     },
 
-    icon: {
-        height: '100%',
-        width: '100%',
-        resizeMode: 'contain'
+    arrow_next: {
+        resizeMode: 'contain',
+        transform: [{
+            rotate: '180deg'
+        }]
     },
+
+    altCont: {
+        flexDirection: 'row',
+        marginRight: 0,
+        marginLeft: 'auto'
+    },
+
+    availableButton: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderRadius: 3,
+        paddingHorizontal: 8,
+        paddingTop: 1,
+        paddingBottom: 3,
+        backgroundColor: "#00ccbd",
+        marginRight: wp(2.66)
+    },
+
+    text: {
+        fontFamily: Fonts.Regular,
+        fontSize: 14,
+        color: '#fff',
+        lineHeight: hp(2.46),
+        marginLeft: 8,
+    }
 })

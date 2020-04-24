@@ -22,7 +22,7 @@ export default class Hours extends Component {
                 <View style={styles.content}>
                     <View style={styles.ImageBox}>
                         <Image
-                            source={require('../../assets/img/icons/default_small.png')}
+                            source={require('../../assets/img/icons/schedule_icon.png')}
                         />
                     </View>
                     <View style={styles.hoursBox}>

@@ -1,7 +1,9 @@
 import 'react-native-gesture-handler';
 import React , { Component } from 'react';
+import { navigationRef } from './RootNavigation';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import SplashScreen from './screens/SplashScreen';
 import StepOne from './screens/OnBoarding/Step1';
 import StepTwo from './screens/OnBoarding/Step2';
@@ -27,7 +29,7 @@ import Search from './screens/Search';
 const Root = createStackNavigator();
 const Home = createStackNavigator();
 const Profile = createStackNavigator();
-const OnBoarding = createStackNavigator();
+const OnBoarding = createMaterialTopTabNavigator();
 const Seller = createStackNavigator();
 const LoginStack = createStackNavigator();
 
@@ -49,9 +51,11 @@ function SellerScreen() {
 function OnBoardingScreen() {
   return(
     <OnBoarding.Navigator
-      screenOptions={{
-        headerShown: false
-      }}
+          tabBarOptions = {{
+              showLabel: false,
+              showIcon: false,
+              style: { height: 0 }
+          }}
     >
         <OnBoarding.Screen name="StepOne" component={StepOne}/>
         <OnBoarding.Screen name="StepTwo" component={StepTwo}/>
@@ -103,7 +107,8 @@ function HomeScreen() {
     >
           <Home.Screen name="Main" component={Main}/>
           <Home.Screen name="Category" component={Category}/>
-          <Home.Screen name="Search" component={Search}/>
+          <Home.Screen name="Search" component={Search} />
+          <Home.Screen name="Location" component={Location}/>
     </Home.Navigator>
   )
 }
@@ -114,7 +119,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <NavigationContainer>
+      <NavigationContainer 
+        ref={navigationRef} 
+      >
         <Root.Navigator
           screenOptions={{
             headerShown: false
