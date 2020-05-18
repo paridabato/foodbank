@@ -14,10 +14,10 @@ export default class ProductCategory extends Component {
     render() {
         return(
             <View style={styles.container}>
-                <Text style={styles.title}>{this.props.category.title}</Text>
+                <Text style={styles.title}>{this.props.cat.name}</Text>
                 <View style={styles.list}>
-                    {this.props.category.products.map((item, key) => (
-                        <ProductCategoryItem handler={this.props.handler} product={item} name={this.props.category.title} key={key} last={ this.props.category.products[key+1] ? false : true } />
+                    {this.props.cat.products.map((item, key) => (
+                        <ProductCategoryItem handler={this.props.handler} product={item} name={this.props.cat.name} key={key} last={ this.props.cat.products[key+1] ? false : true } />
                     ))}
                 </View>
             </View>

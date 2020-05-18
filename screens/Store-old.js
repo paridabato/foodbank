@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity, Animated, StyleSheet, Platform } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, Animated, StyleSheet } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Button from 'react-native-button';
 import Fonts from '../assets/styles/Fonts';
@@ -9,20 +9,127 @@ import ProductCategory from '../parts/Store/ProductCategory';
 import AddToCartModal from '../parts/Tunel/AddToCartModal';
 import CartModal from '../parts/Tunel/CartModal';
 
-const MAIN_MAX_HEIGHT = hp(62);
-const MAIN_MIN_HEIGHT = hp(17.8);
-const HEADER_SCROLL_DISTANCE = MAIN_MAX_HEIGHT - MAIN_MIN_HEIGHT;
+MAIN_MAX_HEIGHT = hp(62)
+MAIN_MIN_HEIGHT = hp(17.8)
 export default class Store extends Component {
     constructor(props){
         super(props);
-        this.state = {
+        this.state={
+            categories: [
+                    {
+                        title: 'Nos paniers',
+                        products: [
+                        {
+                            name: 'Le petit brie', 
+                            qty: 4,
+                            desc: 'Sandwich beurre, brie, salade',
+                            discount: '-20%',
+                            oldPrice: '900 XPF',
+                            newPrice: '720 XPF'
+                        }, 
+                        {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        }, 
+                        {
+                            name: 'Jambon emmental', 
+                            qty: 0,
+                            desc: 'Sandwich beurre, jambon blanc, emmental AOP',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        }
+                        ]
+                    },
+                    {
+                        title: 'Nos sandwiches',
+                        products: [
+                        {
+                            name: 'Le petit brie', 
+                            qty: 4,
+                            desc: 'Sandwich beurre, brie, salade',
+                            discount: '-20%',
+                            oldPrice: '900 XPF',
+                            newPrice: '720 XPF'
+                        }, 
+                        {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        }
+                        ]
+                    },
+                    {
+                        title: 'Nos salades',
+                        products: [
+                            {
+                                name: 'Le petit brie', 
+                                qty: 4,
+                                desc: 'Sandwich beurre, brie, salade',
+                                discount: '-20%',
+                                oldPrice: '900 XPF',
+                                newPrice: '720 XPF'
+                            }, 
+                            {
+                                name: 'Poulet Curry', 
+                                qty: 3,
+                                desc: 'Sandwich, mayonnaise, poulet, curry',
+                                discount: false,
+                                oldPrice: '640 XPF',
+                                newPrice: '640 XPF'
+                            },
+                            {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Nos sandwiches',
+                        products: [
+                        {
+                            name: 'Le petit brie', 
+                            qty: 4,
+                            desc: 'Sandwich beurre, brie, salade',
+                            discount: '-20%',
+                            oldPrice: '900 XPF',
+                            newPrice: '720 XPF'
+                        }, 
+                        {
+                            name: 'Poulet Curry', 
+                            qty: 3,
+                            desc: 'Sandwich, mayonnaise, poulet, curry',
+                            discount: false,
+                            oldPrice: '640 XPF',
+                            newPrice: '640 XPF'
+                        },
+                        {
+                        name: 'Poulet Curry', 
+                        qty: 3,
+                        desc: 'Sandwich, mayonnaise, poulet, curry',
+                        discount: false,
+                        oldPrice: '640 XPF',
+                        newPrice: '640 XPF'
+                        }
+                        ]
+                    },
+            ],
             enabled: false,
             cart: false,
             cartModal: false,
-            currentCat: 0,
-            scrollY: new Animated.Value(
-                0
-            )
+            scrollY: new Animated.Value(0.01),
+            currentCat: 0
         }
         this.hideModal = this.hideModal.bind(this)
         this.showModal = this.showModal.bind(this)
@@ -116,74 +223,64 @@ export default class Store extends Component {
         }))
     }
     render() {
-        const STORE = this.props.route.params.store;
+        const headerHeight = this.state.scrollY.interpolate({
+            inputRange:[0, 40],
+            outputRange: [MAIN_MAX_HEIGHT, MAIN_MIN_HEIGHT],
+            extrapolate: 'clamp'
 
-        const scrollY = Animated.add(
-            this.state.scrollY,
-            0,
-        );
-
-        const headerTranslate = scrollY.interpolate({
-            inputRange: [0, HEADER_SCROLL_DISTANCE],
-            outputRange: [0, -HEADER_SCROLL_DISTANCE],
-            extrapolate: 'clamp',
-        });
-
+        })
         const headerOpacity = this.state.scrollY.interpolate({
-            inputRange: [hp(30), HEADER_SCROLL_DISTANCE],
+            inputRange: [0, 30],
             outputRange: [1, 0],
             extrapolate: 'clamp'
-        });
+        })
 
         const stickyOpacity = this.state.scrollY.interpolate({
-            inputRange: [hp(30), HEADER_SCROLL_DISTANCE],
+            inputRange: [0, 10],
             outputRange: [0, 1],
             extrapolate: 'clamp'
-        });
-        return (
+        })
+
+        const padding = this.state.scrollY.interpolate({
+            inputRange: [0, 40],
+            outputRange: [MAIN_MAX_HEIGHT, MAIN_MIN_HEIGHT],
+            extrapolate: 'clamp'
+        })
+
+        const zIndex = this.state.scrollY.interpolate({
+            inputRange: [0.01, 20],
+            outputRange: [0, 2],
+            extrapolate: 'clamp'
+        })
+        return(
             <View style={styles.container}>
                     <StoreHeader 
-                        navigation={this.props.navigation}
-                        id = {STORE.id}
-                        adress={STORE.adress} 
-                        tel={STORE.phone}
-                        logo={STORE.logo}
-                        image={STORE.image}
-                        name={STORE.name}
-                        rating={STORE.rating}
-                        reviews={STORE.reviews}
-                        translate={headerTranslate}
-                        opacity={headerOpacity}
-                        height={MAIN_MAX_HEIGHT}
-                        navigation={this.props.navigation}  
-                        categories={STORE.categories}
-                        onClick={this.goIndex}
-                        currentCat={this.state.currentCat}
+                        navigation={this.props.navigation} 
+                        adress={'12 rue des Hallebardes, Noumé…'} 
+                        height={headerHeight}
+                        opacity={headerOpacity} 
                     />
                     <StoreStickyHeader 
                         navigation={this.props.navigation}  
-                        categories={STORE.categories}
-                        name={STORE.name}
+                        categories={this.state.categories}
                         opacity={stickyOpacity}
+                        zIndex={zIndex}
                         onClick={this.goIndex}
                         currentCat={this.state.currentCat}
                     />
                     <View >
                     <Animated.FlatList
-                        contentContainerStyle={{ paddingBottom: MAIN_MAX_HEIGHT }}
-                        style={{paddingTop: MAIN_MAX_HEIGHT }}
-                        data={STORE.categories}
-                        ref={ref => { this.flatList_Ref = ref; }}
-                        scrollEventThrottle={1}
-                        onViewableItemsChanged={this.onViewableItemsChanged}
+                        style={{paddingTop: padding}}
+                        contentContainerStyle={{ paddingBottom: hp(40) }}
+                        data={this.state.categories}
+                        ref={ref => {this.flatList_Ref = ref; }}
                         onScroll={Animated.event(
-                            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-                            { useNativeDriver: true },
+                            [{nativeEvent: { contentOffset: { y: this.state.scrollY } } }]
                         )}
                         onViewableItemsChanged={this.onViewableItemsChanged}
                         viewabilityConfig={{itemVisiblePercentThreshold: 60}}
-                        renderItem={({ item: row, index }) =>
-                            <ProductCategory handler={this.showModal} cat={row}/>
+                        renderItem={({item,index}) =>
+                            <ProductCategory handler={this.showModal} category={item} />
                         }
                         keyExtractor={(item, index) => index.toString()}
                         />
@@ -197,7 +294,7 @@ export default class Store extends Component {
                         </View>
                     </View>
                 {this.state.cart ? this.cart() : null}
-                <AddToCartModal enabled={this.state.enabled} cart={this.showCart} handler={this.hideModal} />
+                <AddToCartModal enabled={this.state.enabled} cart={this.showCart} handler={this.hideModal}/>
                 <CartModal navigation={this.props.navigation} buy={this.buyButton} enabled={this.state.cartModal} handler={this.showHideCartModal}/>
             </View>
         )

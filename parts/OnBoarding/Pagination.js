@@ -54,13 +54,14 @@ const styles = StyleSheet.create({
     page: {
         width: wp('2.1%'),
         height: wp('2.1%'),
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#a1a7b4',
         opacity: 0.3,
         borderRadius: 999,
         marginRight: wp('2.1%')
     },
 
     currentPage: {
+        backgroundColor: '#00ccbd',
         width: wp('4.3%'),
         opacity: 1
     }

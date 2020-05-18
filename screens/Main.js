@@ -26,9 +26,6 @@ export default class Main extends Component {
                                 <Category navigation={this.props.navigation} category_name={'Dernières chances'} />
                                 <Category navigation={this.props.navigation} category_name={'Offres en cours'} />
                                 <Category navigation={this.props.navigation} category_name={'Les nouveaux fooders'} />
-                                <Category navigation={this.props.navigation} category_name={'Dernières chances'} />
-                                <Category navigation={this.props.navigation} category_name={'Offres en cours'} />
-                                <Category navigation={this.props.navigation} category_name={'Les nouveaux fooders'} />
                                 {/* <View style={styles.container}></View> */}
                             </View>
                         </ScrollView>

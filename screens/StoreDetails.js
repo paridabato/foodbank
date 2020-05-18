@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, TouchableOpacity, Image, StyleSheet, StatusBar } from 'react-native';
+import { View, ScrollView, Text, TouchableOpacity, Image, StyleSheet, StatusBar, Linking } from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Fonts from '../assets/styles/Fonts';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
@@ -7,21 +7,17 @@ import Hours from '../parts/Store/Hours';
 import Engagement from '../parts/Store/Engagement';
 import Rating from '../parts/Store/Rating';
 
+import { SHOPS } from '../data/dummy-data';
+
 export default class StoreDetails extends Component {
     constructor(props){
         super(props);
         this.state={
-            storeName: 'Boulangerie Martin',
-            coordinate: {
-                latitude: -22.276425, 
-                longitude :166.447334
-            },
-            adress1: '12 rue des Hallebardes,',
-            adress2: '98800 Nouméa'
         }
     }
 
-    render(){
+    render() {
+        const CURRENT_SHOP = SHOPS.find(shop => shop.id === this.props.route.params.id);
         return(
             <View style={styles.container}>
             <StatusBar translucent backgroundColor="#fff" barStyle = 'dark-content'/>
@@ -35,22 +31,22 @@ export default class StoreDetails extends Component {
                                 source={require('../assets/img/back_arrow.png')}
                             />
                         </TouchableOpacity>
-                        <Text style={styles.headerText}>{this.state.storeName}</Text>
+                        <Text style={styles.headerText}>{CURRENT_SHOP.name}</Text>
                     </View>
                     <ScrollView style={styles.content}>
                         <View style={styles.mapCont}>
                             <MapView
                                 provider={PROVIDER_GOOGLE}
                                 initialRegion={{
-                                    latitude: -22.276450,
-                                    longitude: 166.447321,
+                                    latitude: CURRENT_SHOP.position.latitude,
+                                    longitude: CURRENT_SHOP.position.longitude,
                                     latitudeDelta: 0.005,
                                     longitudeDelta: 0.005,
                                 }}
                                 style={styles.map}
                             >
                                 <Marker
-                                    coordinate={this.state.coordinate}
+                                    coordinate={CURRENT_SHOP.position}
                                 >
                                     <Image
                                         source={require('../assets/img/icons/map_pin.png')}
@@ -59,7 +55,7 @@ export default class StoreDetails extends Component {
                             </MapView>
                         </View>
                         <View style={styles.infoContainer}>
-                            <Text style={styles.infoTitle}>{this.state.storeName}</Text>
+                            <Text style={styles.infoTitle}>{CURRENT_SHOP.name}</Text>
                             <View style={styles.infoContent}>
                                 <View style={styles.infoContentBox}>
                                     <View style={styles.infoIcon}>
@@ -68,8 +64,7 @@ export default class StoreDetails extends Component {
                                         />
                                     </View>
                                     <View>
-                                        <Text style={[styles.infoAdress, {marginBottom: hp(0.8),}]}>{this.state.adress1}</Text>
-                                        <Text style={styles.infoAdress}>{this.state.adress2}</Text>
+                                        <Text numberOfLines={2} style={[styles.infoAdress]}>{CURRENT_SHOP.adress}</Text>
                                     </View>
                                 </View>
                                 <TouchableOpacity>
@@ -77,15 +72,17 @@ export default class StoreDetails extends Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <Hours />
+                        <Hours hours={CURRENT_SHOP.hours}/>
                         <View style={styles.bottom}>
                             <Engagement />
-                            <Rating />
+                            <Rating rating={CURRENT_SHOP.rating} rev={CURRENT_SHOP.reviews} />
                         </View>
                         <View style={styles.contacts}>
                             <Text style={styles.contactsTitle}>Vous avez des questions sur les allergènes ?</Text>
                             <View style={styles.call}>
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => { Linking.openURL(`tel:${CURRENT_SHOP.phone}`)}} 
+                                >
                                     <View style={styles.button}>
                                         <View style={styles.left}>
                                             <View style={styles.iconCont}>
@@ -94,7 +91,7 @@ export default class StoreDetails extends Component {
                                                     source={require('../assets/img/icons/icon_call.png')}
                                                 />
                                             </View>
-                                            <Text style={styles.buttonText}>Appeler {this.state.storeName}</Text>
+                                            <Text style={styles.buttonText}>Appeler {CURRENT_SHOP.name}</Text>
                                         </View>
                                         <View style={styles.iconBox}>
                                             <Image
@@ -106,28 +103,34 @@ export default class StoreDetails extends Component {
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.facebook}>
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => { CURRENT_SHOP.facebook !== '' ? Linking.openURL(CURRENT_SHOP.facebook) : false }}
+                                    activeOpacity={CURRENT_SHOP.facebook !== '' ? 0.6 : 1}
+                                >
                                     <View style={styles.button}>
                                         <View style={styles.iconCont}>
                                             <Image
-                                                style={styles.icon}
+                                                style={CURRENT_SHOP.facebook !== '' ? styles.icon : [styles.icon, {opacity: 0.6}]}
                                                 source={require('../assets/img/icons/facebook_icon_cyan.png')}
                                             />
                                         </View>
-                                        <Text style={styles.buttonText}>Facebook</Text>
+                                        <Text style={CURRENT_SHOP.facebook !== '' ? styles.buttonText : [styles.buttonText, {opacity: 0.6}]}>Facebook</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.site}>
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={() => { CURRENT_SHOP.site !== '' ? Linking.openURL(CURRENT_SHOP.site) : false }}
+                                    activeOpacity={CURRENT_SHOP.site !== '' ? 0.6 : 1}
+                                >
                                     <View style={styles.button}>
                                         <View style={styles.iconCont}>
                                             <Image
-                                                style={styles.icon}
+                                                style={CURRENT_SHOP.site !== '' ? styles.icon : [styles.icon, {opacity: 0.3}]}
                                                 source={require('../assets/img/icons/icon_link.png')}
                                             />
                                         </View>
-                                        <Text style={styles.buttonText}>Site internet</Text>
+                                        <Text style={CURRENT_SHOP.site !== '' ? styles.buttonText : [styles.buttonText, {opacity: 0.3}]}>Site internet</Text>
                                     </View>
                                 </TouchableOpacity>
                             </View>
@@ -233,7 +236,7 @@ const styles = StyleSheet.create({
 
     infoContent: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
 
     infoContentBox: {
@@ -248,7 +251,8 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.Regular,
         fontSize: hp(1.97),
         lineHeight: hp(1.97),
-        color: "#5a657c"
+        color: "#5a657c",
+        width: wp(60)
     },
 
     infoLink: {

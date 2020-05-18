@@ -9,7 +9,7 @@ export default class StoreStickyHeader extends Component {
         this.state = {
             tabs: this.props.categories.map((item, index)=> {
                 const tabList={}
-                tabList['name'] = item.title
+                tabList['name'] = item.name
                 return tabList
             }),
             active_tab: 0
@@ -48,7 +48,7 @@ export default class StoreStickyHeader extends Component {
                     </TouchableOpacity>
                </View>
                <View style={styles.mid}>
-                   <Text style={styles.title}>Boulangerie Martin</Text>
+                    <Text numberOfLines={1} style={styles.title}>{this.props.name}</Text>
                </View>
                <View style={styles.right}></View>
            </View>
@@ -85,6 +85,7 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         width: '100%',
+        zIndex: 3,
         backgroundColor: 'white',
         paddingTop: hp(6.65),
         paddingBottom: hp(1.97),

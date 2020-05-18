@@ -9,11 +9,9 @@ export default class StoreRating extends Component {
         super(props);
         this.state = {
             rating: {
-                common: 4.5,
                 service: 4,
                 amount: 4,
-                quality: 5,
-                votes: 50
+                quality: 5
             }
         }
     }
@@ -25,7 +23,7 @@ export default class StoreRating extends Component {
                 <View style={styles.firstRow}>
                     <View style={styles.side}>
                         <Rating
-                            startingValue = {this.state.rating.common}
+                            startingValue = {this.props.rating}
                             readonly
                             type='custom'
                             ratingImage={require('../../assets/img/icons/star.png')}
@@ -37,7 +35,7 @@ export default class StoreRating extends Component {
                     </View>
                     <View style={styles.side}>
                         <View>
-                            <Text style={styles.common}>{this.state.rating.common} Très bien ({this.state.rating.votes}+)</Text>
+                            <Text style={styles.common}>{this.props.rating} Très bien ({this.props.rev}+)</Text>
                         </View>
                     </View>
                 </View>

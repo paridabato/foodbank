@@ -9,42 +9,39 @@ export default class ProductCategoryItem extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: props.name,
-            product: props.product,
-            last: props.last
         }
     }
 
     render() {
         return (
             <TouchableOpacity
-                onPress={this.state.product.qty === 0 ? null : this.props.handler}
-                activeOpacity={this.state.product.qty === 0 ? 1 : 0.6}
+                onPress={this.props.product.qty === 0 ? null : this.props.handler}
+                activeOpacity={this.props.product.qty === 0 ? 1 : 0.6}
             >
-                <View style={ this.state.last ? [styles.item, styles.lastItem] : styles.item }>
+                <View style={ this.props.last ? [styles.item, styles.lastItem] : styles.item }>
                     <View style={styles.header}>
-                            <Text style={ this.state.product.qty !== 0 ? styles.name : [styles.name, {opacity: 0.3}] }>{this.state.product.name}</Text>
-                            <BuyButton product={this.props.product} qty={this.state.product.qty}/>
+                            <Text style={ this.props.product.qty !== 0 ? styles.name : [styles.name, {opacity: 0.3}] }>{this.props.product.name}</Text>
+                            <BuyButton product={this.props.product} qty={this.props.product.qty}/>
                     </View>
                     <View style={styles.body}>
-                        <Text style={ this.state.product.qty !== 0 ? styles.desc : [styles.desc, {opacity: 0.3}] }>{this.state.product.desc}</Text>
+                        <Text style={ this.props.product.qty !== 0 ? styles.desc : [styles.desc, {opacity: 0.3}] }>{this.props.product.description}</Text>
                     </View>
                     {
-                    this.state.product.discount ?
+                    this.props.product.discount ?
                         <View style={styles.priceBox}>
-                            <View style={ this.state.product.qty !== 0 ? styles.discount : [styles.discount, {opacity: 0.3}] }>
+                            <View style={ this.props.product.qty !== 0 ? styles.discount : [styles.discount, {opacity: 0.3}] }>
                                 <Image
                                     style={styles.sun}
                                     source={require('../../assets/img/icons/sun.png')}
                                 />
-                                <Text style={styles.value}>{this.state.product.discount}</Text>
+                                <Text style={styles.value}>{this.props.product.discount}</Text>
                             </View> 
-                            <Text style={ this.state.product.qty !== 0 ? styles.old : [styles.old, {opacity: 0.3}] }>{this.state.product.oldPrice}</Text>
-                            <Text style={ this.state.product.qty !== 0 ? styles.new : [styles.new, {opacity: 0.3}] }>{this.state.product.newPrice}</Text>
+                            <Text style={ this.props.product.qty !== 0 ? styles.old : [styles.old, {opacity: 0.3}] }>{this.props.product.price} XPF</Text>
+                            <Text style={ this.props.product.qty !== 0 ? styles.new : [styles.new, {opacity: 0.3}] }>{this.props.product.discountPrice} XPF</Text>
                         </View>
                         : 
                         <View style={styles.priceBox}>
-                            <Text style={ this.state.product.qty !== 0 ? styles.new : [styles.new, {opacity: 0.3}] }>{this.state.product.newPrice}</Text>
+                            <Text style={ this.props.product.qty !== 0 ? styles.new : [styles.new, {opacity: 0.3}] }>{this.props.product.discountPrice} XPF</Text>
                         </View>
                     }
                     </View>

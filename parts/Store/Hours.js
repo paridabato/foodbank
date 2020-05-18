@@ -8,9 +8,6 @@ export default class Hours extends Component {
         super(props);
         this.state = {
             hours: {
-                mon_fr: '06h - 19h',
-                sut: '09h - 12h',
-                sun: 'Fermé'
             }
         }
     }
@@ -28,15 +25,15 @@ export default class Hours extends Component {
                     <View style={styles.hoursBox}>
                         <View style={[styles.hoursBoxItem, {marginBottom: hp(4.43)}]}>
                             <Text style={styles.day}>Lundi au vendredi</Text>
-                            <Text style={styles.hours}>{this.state.hours.mon_fr}</Text>
+                            <Text style={styles.hours}>{this.props.hours.workdays}</Text>
                         </View>
                         <View style={[styles.hoursBoxItem, {marginBottom: hp(4.43)}]}>
                             <Text style={styles.day}>Samedi</Text>
-                            <Text style={styles.hours}>{this.state.hours.mon_fr}</Text>
+                            <Text style={styles.hours}>{this.props.hours.sut}</Text>
                         </View>
                         <View style={styles.hoursBoxItem}>
                             <Text style={styles.day}>Dimanche</Text>
-                            <Text style={styles.hours}>{this.state.hours.mon_fr}</Text>
+                            <Text style={styles.hours}>{this.props.hours.sun}</Text>
                         </View>
                     </View>
                 </View>

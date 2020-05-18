@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Animated } from 'react-native';
 import Fonts from '../../assets/styles/Fonts';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
+import { SHOPS } from '../../data/dummy-data';
 
 export default class StoreInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            adress: props.adress
         }
     }
 
     render() {
+        const ADRESS = SHOPS.find(shop => shop.id === this.props.id).adress;
         return(
-            <View style={styles.container}>
+            <Animated.View style={styles.container}>
                 <Text style={styles.title}>Infos commerçant</Text>
                 <View style={styles.content}>
-                    <Text style={styles.adress}>{this.state.adress}</Text>
+                    <Text numberOfLines={1} ellipsizeMode='tail' style={styles.adress}>{ADRESS}</Text>
                     <TouchableOpacity
-                        onPress={()=>this.props.navigation.navigate('StoreDetails')}
+                        style={{marginLeft: wp(6.6)}}
+                        onPress={()=>this.props.navigation.navigate('StoreDetails', {id: this.props.id})}
                     >
                         <Text style={styles.link}>En savoir plus</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </Animated.View>
         )
     }
 }
@@ -38,6 +41,7 @@ const styles = StyleSheet.create({
         },
         shadowRadius: 10,
         shadowOpacity: 1,
+        elevation: 3,
         paddingHorizontal: 16,
         paddingBottom: hp(3.07),
         paddingTop: hp(2.7)
@@ -55,14 +59,16 @@ const styles = StyleSheet.create({
     content: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        maxWidth: '100%'
     },
 
     adress: {
         fontFamily: Fonts.Regular,
         fontSize: hp(1.72),
         lineHeight: hp(2.95),
-        color: "#5a657c"
+        color: "#5a657c",
+        maxWidth: wp(55.47)
     },
 
     link: {

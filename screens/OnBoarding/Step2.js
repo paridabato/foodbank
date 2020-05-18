@@ -22,12 +22,12 @@ export default class StepTwo extends Component {
                 <View style={styles.wrapper}>
                     <TouchableOpacity 
                         style={styles.topButton}
-                        onPress={() => this.props.navigation.navigate('StepThree')}
+                        onPress={() => this.props.navigation.replace('Login')}
                     >
                         <Text style={styles.nextTop}>Passer</Text>
-                        <Image 
+                       <Image 
                             style = {styles.nextTopArrow}
-                            source = { require('../../assets/img/next_top.png') }
+                            source = { require('../../assets/img/back_arrow.png') }
                         />
                     </TouchableOpacity>
                     <View style={styles.imageCont}>
@@ -38,7 +38,7 @@ export default class StepTwo extends Component {
                     </View>
                     <View style={styles.sqare}></View>
                     <View style={styles.content}>
-                        <Text style={styles.text}>Identifie les bons plans anti-gaspi autour de toi.</Text>
+                        <Text style={styles.text}>Identifie <Text style={styles.tintText}>les bons plans</Text> lanti-gaspi autour de toi.</Text>
                     </View>
                     <View style={styles.bottomControls}>
                         <Pagination page={this.state.page} />
@@ -48,7 +48,7 @@ export default class StepTwo extends Component {
                         >
                             <Image 
                                 style={styles.bottomButtonImage}
-                                source = {require('../../assets/img/arrow_cyan_right.png')}
+                                source = {require('../../assets/img/arrow_right.png')}
                             />
                         </TouchableOpacity>
                     </View>
@@ -61,7 +61,7 @@ export default class StepTwo extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFD70D',
+        backgroundColor: '#FFF',
         paddingBottom: hp('6%'),
     },
 
@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: "space-between"
     },
 
     topButton:{
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
 
     nextTop: {
         fontFamily: Fonts.Bold,
-        color: '#FFFFFF',
+        color: '#142444',
         fontSize: 16,
         lineHeight: 16,
         marginRight: 7
@@ -94,27 +93,23 @@ const styles = StyleSheet.create({
 
     nextTopArrow: {
         width: wp('2.1%'),
-        height: wp('2.1%')
+        height: wp('2.1%'),
+        transform: [{rotate: '180deg'}]
     },
 
     imageCont: {
-        position: 'relative',
+        width: '100%',
+        height: hp(45.67),
+        marginTop: hp(10.47),
+        marginBottom: hp(6.77),
+        display: 'flex',
+        justifyContent: 'center'
     },
 
     mainImage: {
-    },
-
-    sqare: {
-        width: wp(200),
-        height: wp(200),
-        backgroundColor: '#ffe32a',
-        position: 'absolute',
-        top: -wp(112),
-        left: -wp(100),
-        zIndex: -1,
-        transform: [
-            {rotate: '60deg'}
-        ],
+        width: 'auto',
+        height: hp(44.45),
+        resizeMode: 'contain'
     },
 
     content: {
@@ -122,11 +117,16 @@ const styles = StyleSheet.create({
         paddingHorizontal: wp('12%')
     },
 
-    text: {
+   text: {
         fontFamily: Fonts.Bold,
         fontSize: windowHeight  >=  736 ? hp(2.95) : hp(2.21),
         lineHeight: windowHeight  >=  736 ? hp(3.94): hp(3.2),
-        color: '#FFFFFF'
+        color: '#142444',
+        letterSpacing: -0.1
+    },
+
+    tintText: {
+        color: '#00ccbd'
     },
 
     bottomControls: {
@@ -135,6 +135,8 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         paddingHorizontal: wp('12%'),
+        marginTop: 'auto',
+        marginBottom: 0
     },
 
     bottomButton: {
@@ -143,7 +145,7 @@ const styles = StyleSheet.create({
         width: wp('12.8%'),
         height: wp('12.8%'),
         borderRadius: 999,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#00ccbd",
         shadowColor: "rgba(0, 0, 0, 0.1)",
         shadowOffset: {
             width: 0,

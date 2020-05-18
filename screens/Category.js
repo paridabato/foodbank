@@ -4,6 +4,8 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import Fonts from '../assets/styles/Fonts';
 import StoreCard from '../parts/StoreCard';
 
+import { SHOPS } from '../data/dummy-data.js';
+
 export default class Category extends Component {
     constructor(props){
         super(props);
@@ -80,12 +82,13 @@ export default class Category extends Component {
                 </View>
                     <FlatList 
                             style={styles.content}
-                            data={this.state.stores}
+                            data={SHOPS}
                             keyExtractor={(item,index) => index.toString()}
                             renderItem={({ item: row, index }) =>
                                 <StoreCard
                                     navigation={this.props.navigation}
                                     store={row}
+                                    fw={true}
                                 />
                             }
                     />

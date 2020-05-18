@@ -1,38 +1,34 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Image, StyleSheet, Dimensions } from 'react-native';
 import { Badge, Icon } from 'react-native-elements';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Fonts from '../assets/styles/Fonts';
+
+const deviceHeight = Dimensions.get('window').height;
 
 export default class StoreCard extends Component {
     constructor(props){
         super(props);
         this.state={
-            img: props.store.img,
-            discount: props.store.discount,
-            status: props.store.status,
-            logo: props.store.logo,
-            name: props.store.name,
-            category: props.store.category,
-            distance: props.store.distance,
-            rating: props.store.rating,
-            counter: props.store.counter,
-            fw: props.store.fw
+            fw: props.fw
         }
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <View style={this.state.fw ? styles.fwCard : styles.card }>
                 <TouchableOpacity
                     activeOpacity={0.7}
-                    onPress={()=>this.props.navigation.navigate('Store')}
+                    onPress={() => this.props.navigation.navigate('Store', {
+                        screen: 'Store',
+                        params: { store: this.props.store },
+                    })}
                 >
                     <View style={styles.top}>
                         <View style={styles.imageBox}>
                             <Image
                                 style={styles.img}
-                                source={this.state.img}
+                                source={this.props.store.image}
                             />
                         </View>
                         <View style={styles.topBadge}>
@@ -42,22 +38,22 @@ export default class StoreCard extends Component {
                                     source={require('../assets/img/icons/sun.png')}
                                 />
                             </View>
-                            <Text style={styles.discount}>{this.state.discount}</Text>
+                            <Text style={styles.discount}>Plus que 1h pour profiter des -20%</Text>
                         </View>
                         <View style={styles.botBadge}>
                             <Badge status="success" />
-                            <Text style={styles.status}>{this.state.status}</Text>
+                            <Text style={styles.status}>Ferme dans 1h</Text>
                         </View>
                         <View style={styles.logoCont}>
                             <Image
                                 style={styles.logo}
-                                source={this.state.logo}
+                                source={this.props.store.logo}
                             />
                         </View>
                     </View>
                     <View style={styles.bot}>
-                        <Text style={styles.name}>{this.state.name}</Text>
-                        <Text style={styles.category}>{this.state.category}</Text>
+                        <Text style={styles.name}>{this.props.store.name}</Text>
+                        <Text style={styles.category}>{this.props.store.prodTypes}</Text>
                         <View style={styles.info}>
                             <View style={styles.tile}>
                                 <Icon
@@ -66,7 +62,7 @@ export default class StoreCard extends Component {
                                     type='material-community'
                                     color='#A1A7B4'
                                 />
-                                <Text style={styles.tileText}>{this.state.distance}</Text>
+                                <Text style={styles.tileText}>500m</Text>
                             </View>
                             <View style={styles.tile}>
                                 <Icon
@@ -75,7 +71,7 @@ export default class StoreCard extends Component {
                                     type='material-community'
                                     color='#A1A7B4'
                                 />
-                                <Text style={styles.tileText}>{this.state.rating}</Text>
+                                <Text style={styles.tileText}>{this.props.store.rating} ({this.props.store.reviews}+)</Text>
                             </View>
                             <View style={styles.tile}>
                                 <Icon
@@ -84,7 +80,7 @@ export default class StoreCard extends Component {
                                     type='material-community'
                                     color='#A1A7B4'
                                 />
-                                <Text style={styles.tileText}>{this.state.counter}</Text>
+                                <Text style={styles.tileText}>8 invendus</Text>
                             </View>
                         </View>
                     </View>
@@ -108,7 +104,7 @@ const styles = StyleSheet.create({
 
     top: {
         width: '100%',
-        height: hp(18.72),
+        height: deviceHeight > 690 ? hp(18.72) : hp(24),
         position: 'relative'
     },
 

@@ -21,12 +21,12 @@ export default class StepOne extends Component {
                 <View style={styles.wrapper}>
                     <TouchableOpacity 
                         style={styles.topButton}
-                        onPress={() => this.props.navigation.navigate('StepTwo')}
+                        onPress={() => this.props.navigation.replace('Login')}
                     >
                         <Text style={styles.nextTop}>Passer</Text>
                         <Image 
                             style = {styles.nextTopArrow}
-                            source = { require('../../assets/img/next_top.png') }
+                            source = { require('../../assets/img/back_arrow.png') }
                         />
                     </TouchableOpacity>
                     <View style={styles.imageCont}>
@@ -35,9 +35,8 @@ export default class StepOne extends Component {
                                 source = {require('../../assets/img/onboarding1.png')}
                             />
                     </View>
-                    <View style={styles.sqare}></View>
                     <View style={styles.content}>
-                        <Text style={styles.text}>Chaque jour, de nombreux produits invendus n’attendent qu’à être consommés.</Text>
+                        <Text style={styles.text}>Chaque jour, de nombreux produits invendus <Text style={styles.tintText}>n’attendent qu’à être consommés.</Text></Text>
                     </View>
                     <View style={styles.bottomControls}>
                         <Pagination page={this.state.page} />
@@ -47,7 +46,7 @@ export default class StepOne extends Component {
                         >
                             <Image 
                                 style={styles.bottomButtonImage}
-                                source = {require('../../assets/img/arrow_cyan_right.png')}
+                                source = {require('../../assets/img/arrow_right.png')}
                             />
                         </TouchableOpacity>
                     </View>
@@ -60,7 +59,7 @@ export default class StepOne extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#00CCBD',
+        backgroundColor: '#FFF',
         paddingBottom: hp('6%'),
     },
 
@@ -68,8 +67,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         flex: 1,
         display: 'flex',
-        flexDirection: 'column',
-        justifyContent: "space-between"
+        flexDirection: 'column'
     },
 
     topButton:{
@@ -85,7 +83,7 @@ const styles = StyleSheet.create({
 
     nextTop: {
         fontFamily: Fonts.Bold,
-        color: '#FFFFFF',
+        color: '#142444',
         fontSize: 16,
         lineHeight: 16,
         marginRight: 7
@@ -93,29 +91,23 @@ const styles = StyleSheet.create({
 
     nextTopArrow: {
         width: wp('2.1%'),
-        height: wp('2.1%')
+        height: wp('2.1%'),
+        transform: [{rotate: '180deg'}]
     },
 
     imageCont: {
-        position: 'relative',
+        width: '100%',
+        height: hp(45.67),
+        marginTop: hp(10.47),
+        marginBottom: hp(6.77),
+        display: 'flex',
+        justifyContent: 'center'
     },
 
     mainImage: {
-        marginRight: 0,
-        marginLeft: 'auto'
-    },
-
-    sqare: {
-        width: wp(200),
-        height: wp(200),
-        backgroundColor: '#00dfd2',
-        position: 'absolute',
-        top: -wp(112),
-        left: -wp(100),
-        zIndex: -1,
-        transform: [
-            {rotate: '60deg'}
-        ],
+        width: '100%',
+        height: hp(45.67),
+        resizeMode: 'contain'
     },
 
     content: {
@@ -127,11 +119,17 @@ const styles = StyleSheet.create({
         fontFamily: Fonts.Bold,
         fontSize: windowHeight  >=  736 ? hp(2.95) : hp(2.21),
         lineHeight: windowHeight  >=  736 ? hp(3.94): hp(3.2),
-        color: '#FFFFFF'
+        color: '#142444'
+    },
+
+    tintText: {
+        color: '#00ccbd'
     },
 
     bottomControls: {
         display: 'flex',
+        marginTop: 'auto',
+        marginBottom: 0,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -144,7 +142,7 @@ const styles = StyleSheet.create({
         width: wp('12.8%'),
         height: wp('12.8%'),
         borderRadius: 999,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#00ccbd",
         shadowColor: "rgba(0, 0, 0, 0.1)",
         shadowOffset: {
             width: 0,

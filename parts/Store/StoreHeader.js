@@ -9,19 +9,19 @@ export default class Store extends Component {
     constructor(props){
         super(props);
         this.state={
-            phoneNumber: '+000000000'
+            
         }
     }
 
     render(){
         return(
-            <Animated.View style={[{height: this.props.height, opacity: this.props.opacity}, styles.container]}>
+            <Animated.View style={[{height: this.props.height, opacity: this.props.opacity, transform: [{ translateY: this.props.translate }]}, styles.container]}>
                 <StatusBar translucent backgroundColor='rgba(0, 0, 0, 0.4)' barStyle = 'light-content' />
                 <View style={styles.header}>
                     <View style={styles.top}>
                         <Image
                             style={styles.topImage}
-                            source={require('../../assets/img/store_page.png')}
+                            source={this.props.image}
                         />
                         <View style={styles.topBar}>
                             <TouchableOpacity  
@@ -47,7 +47,7 @@ export default class Store extends Component {
                             <View style={styles.logoBox}>
                                 <Image
                                     style={styles.logo}
-                                    source={require('../../assets/img/sushis.png')}
+                                    source={this.props.logo}
                                 />
                             </View>
                             <View style={styles.status}>
@@ -57,7 +57,7 @@ export default class Store extends Component {
                         </View>
                     </View>
                     <View style={styles.bot}>
-                        <Text style={styles.name}>Boulangerie Paul</Text>
+                        <Text style={styles.name}>{this.props.name}</Text>
                         <View style={styles.summary}>
                             <View style={styles.rate}>
                                     <Icon
@@ -66,12 +66,12 @@ export default class Store extends Component {
                                         type='material-community'
                                         color='#00ccbd'
                                     />
-                                <Text style={styles.summaryText}>4,5</Text>
+                                <Text style={styles.summaryText}>{this.props.rating}</Text>
                                 <Text style={styles.summaryText}>Très bien</Text>
-                                <Text style={styles.summaryText}>(50+)</Text>
+                                <Text style={styles.summaryText}>({this.props.reviews}+)</Text>
                             </View>
                             <TouchableOpacity
-                                onPress={()=>{Linking.openURL('tel:1234567890');}} 
+                                onPress={() => { Linking.openURL(`tel:${this.props.tel}`);}} 
                             >
                                 <View style={styles.call}>
                                     <View style={styles.iconCallBox}>
@@ -86,7 +86,7 @@ export default class Store extends Component {
                         </View>
                     </View>
                 </View>
-                <StoreInfo navigation={this.props.navigation} adress={this.props.adress} />
+                <StoreInfo navigation={this.props.navigation} id={this.props.id} />
              </Animated.View>
         )
     }
