@@ -13,9 +13,16 @@ export default class Store extends Component {
         }
     }
 
-    render(){
+  render() {
         return(
-            <Animated.View style={[{height: this.props.height, opacity: this.props.opacity, transform: [{ translateY: this.props.translate }]}, styles.container]}>
+          <Animated.View style={[
+            {
+              zIndex: this.props.opacity == 1 ? 3 : 1,
+              height: this.props.height,
+              opacity: this.props.opacity,
+              transform: [{ translateY: this.props.translate }]
+            }, styles.container]}
+          >
                 <StatusBar translucent backgroundColor='rgba(0, 0, 0, 0.4)' barStyle = 'light-content' />
                 <View style={styles.header}>
                     <View style={styles.top}>
@@ -95,7 +102,6 @@ export default class Store extends Component {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        zIndex: 1,
         top: 0,
         left: 0,
         width: '100%',

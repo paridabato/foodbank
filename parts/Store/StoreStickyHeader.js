@@ -32,8 +32,13 @@ export default class StoreStickyHeader extends Component {
     }
 
     render() {
-    return (
-      <Animated.View style={[{opacity: this.props.opacity, zIndex: this.props.zIndex}, styles.container]}>
+      return (
+        <Animated.View style={[
+          {
+            opacity: this.props.opacity,
+            transform: [{ translateY: this.props.translate }]
+          },
+          styles.container]}>
            <StatusBar translucent backgroundColor='rgba(0, 0, 0, 0.4)' barStyle = 'dark-content' />
            <View style={styles.topBar}>
                <View style={styles.left}>

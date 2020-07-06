@@ -128,6 +128,12 @@ export default class Store extends Component {
             outputRange: [0, -HEADER_SCROLL_DISTANCE],
             extrapolate: 'clamp',
         });
+      
+      const stickyTranslate = scrollY.interpolate({
+            inputRange: [0, HEADER_SCROLL_DISTANCE],
+            outputRange: [-200, 0],
+            extrapolate: 'clamp',
+        });
 
         const headerOpacity = this.state.scrollY.interpolate({
             inputRange: [hp(30), HEADER_SCROLL_DISTANCE],
@@ -140,25 +146,32 @@ export default class Store extends Component {
             outputRange: [0, 1],
             extrapolate: 'clamp'
         });
+      
+       const headerzIndex = this.state.scrollY.interpolate({
+            inputRange: [hp(30), HEADER_SCROLL_DISTANCE],
+            outputRange: [0, 1],
+            extrapolate: 'clamp'
+       });
         return (
             <View style={styles.container}>
                     <StoreHeader 
-                        navigation={this.props.navigation}
-                        id = {STORE.id}
-                        adress={STORE.adress} 
-                        tel={STORE.phone}
-                        logo={STORE.logo}
-                        image={STORE.image}
-                        name={STORE.name}
-                        rating={STORE.rating}
-                        reviews={STORE.reviews}
-                        translate={headerTranslate}
-                        opacity={headerOpacity}
-                        height={MAIN_MAX_HEIGHT}
-                        navigation={this.props.navigation}  
-                        categories={STORE.categories}
-                        onClick={this.goIndex}
-                        currentCat={this.state.currentCat}
+                      navigation={this.props.navigation}
+                      id={STORE.id}
+                      adress={STORE.adress}
+                      tel={STORE.phone}
+                      logo={STORE.logo}
+                      image={STORE.image}
+                      name={STORE.name}
+                      rating={STORE.rating}
+                      reviews={STORE.reviews}
+                      translate={headerTranslate}
+                      opacity={headerOpacity}
+                      height={MAIN_MAX_HEIGHT}
+                      navigation={this.props.navigation}
+                      categories={STORE.categories}
+                      onClick={this.goIndex}
+                      currentCat={this.state.currentCat}
+                      zIndex={headerzIndex}
                     />
                     <StoreStickyHeader 
                         navigation={this.props.navigation}  
@@ -167,6 +180,7 @@ export default class Store extends Component {
                         opacity={stickyOpacity}
                         onClick={this.goIndex}
                         currentCat={this.state.currentCat}
+                        translate={stickyTranslate}
                     />
                     <View >
                     <Animated.FlatList
@@ -180,7 +194,6 @@ export default class Store extends Component {
                             [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
                             { useNativeDriver: true },
                         )}
-                        onViewableItemsChanged={this.onViewableItemsChanged}
                         viewabilityConfig={{itemVisiblePercentThreshold: 60}}
                         renderItem={({ item: row, index }) =>
                             <ProductCategory handler={this.showModal} cat={row}/>
